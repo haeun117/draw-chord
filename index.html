@@ -1677,6 +1677,9 @@
           if (currentStage.id === 7 && index === currentStage.notes.length - 1) {
             octaveShift = 12;
           }
+          if (currentStage.id === 8 && note === "re") {
+            octaveShift = 12;
+          }
           const midi = baseMidi + currentStage.intervals[note] + octaveShift;
           noteFrequencies[note] = 440 * Math.pow(2, (midi - 69) / 12);
         });
