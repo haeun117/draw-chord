@@ -1194,11 +1194,12 @@
           stageTitle.textContent = currentStage.title;
         }
         if (missionSteps) {
-          const labels = noteNames.map((note) => formatNoteLabel(note));
-          missionSteps.innerHTML = labels
-            .map((label, index) => {
-              const prefix = index === 0 ? "시작" : index === labels.length - 1 ? "마지막" : "다음";
-              return `<li>${prefix}: <span>${label}</span></li>`;
+          missionSteps.innerHTML = currentStage.notes
+            .map((noteId, index) => {
+              const label = formatNoteLabel(getNoteNameForNoteId(noteId));
+              const prefix = index === 0 ? "시작" : index === currentStage.notes.length - 1 ? "마지막" : "다음";
+              const color = noteMeta[noteId]?.color || "#94a3b8";
+              return `<li>${prefix}: <span class="inline-flex items-center gap-2"><span class="inline-block h-3 w-3 rounded-full" style="background:${color}"></span>${label}</span></li>`;
             })
             .join("");
         }
