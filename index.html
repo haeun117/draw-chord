@@ -1821,6 +1821,7 @@
 
       function isLayoutComplex(layout) {
         let invalidPairs = 0;
+        let diagonalPairs = 0;
         currentStage.notes.forEach((note) => {
           const pair = layout.filter((node) => node.note === note);
           if (pair.length !== 2) return;
@@ -1829,10 +1830,17 @@
           const isAdjacent = dx + dy === 1;
           const isDiagonal = dx === 1 && dy === 1;
           const isStraightLine = dx === 0 || dy === 0;
-          if (isAdjacent || isDiagonal || isStraightLine) {
+          if (isDiagonal) {
+            diagonalPairs += 1;
+            if (currentStage.id === 7 || currentStage.id === 8) return;
+          }
+          if (isAdjacent || isStraightLine || (isDiagonal && currentStage.id !== 7 && currentStage.id !== 8)) {
             invalidPairs += 1;
           }
         });
+        if (currentStage.id === 7 || currentStage.id === 8) {
+          invalidPairs += Math.max(0, diagonalPairs - 1);
+        }
         if (invalidPairs > 1) return false;
 
         const rowSet = new Set();
