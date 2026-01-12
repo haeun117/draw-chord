@@ -2298,18 +2298,19 @@
         resetToken += 1;
         const token = resetToken;
         if (layoutSpinner) layoutSpinner.classList.remove("hidden");
-        setTimeout(() => {
+        const attemptLayout = () => {
           if (token !== resetToken) return;
           const layout = generateLayout();
           if (!layout || layout.length === 0) {
-            setTimeout(() => resetAll(), 120);
+            setTimeout(attemptLayout, 120);
             return;
           }
           applyLayout(layout);
           renderStage();
           connectionHistory = [];
           if (layoutSpinner) layoutSpinner.classList.add("hidden");
-        }, 0);
+        };
+        setTimeout(attemptLayout, 0);
       }
 
       function resetLinesOnly() {
