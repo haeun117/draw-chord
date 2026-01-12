@@ -1829,6 +1829,16 @@
       }
 
       function isLayoutComplex(layout) {
+        let adjacentPairs = 0;
+        currentStage.notes.forEach((note) => {
+          const pair = layout.filter((node) => node.note === note);
+          if (pair.length !== 2) return;
+          if (manhattan(pair[0], pair[1]) === 1) {
+            adjacentPairs += 1;
+          }
+        });
+        if (adjacentPairs > 1) return false;
+
         const rowSet = new Set();
         const colSet = new Set();
         layout.forEach((node) => {
