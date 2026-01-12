@@ -909,6 +909,7 @@
       let occupiedCells = new Set();
       let connectionHistory = [];
       let statusHintPersist = false;
+      let resetToken = 0;
       const hoverPanel = document.getElementById("hoverPanel");
       const hoverTitle = document.getElementById("hoverTitle");
       const hoverSubtitle = document.getElementById("hoverSubtitle");
@@ -1857,9 +1858,10 @@
       function generateRandomLayout() {
         const layout = [];
         const occupied = new Set();
+        const attemptsPerNote = currentStage.id >= 7 ? 400 : 200;
         for (const note of currentStage.notes) {
           let placed = false;
-          for (let attempt = 0; attempt < 200; attempt += 1) {
+          for (let attempt = 0; attempt < attemptsPerNote; attempt += 1) {
             const first = pickRandomCell(occupied);
             occupied.add(`${first.col},${first.row}`);
             const second = pickRandomCell(occupied);
@@ -2076,9 +2078,9 @@
             return null;
           };
 
-          let layout = tryGenerate(original, 400);
-          if (!layout) layout = tryGenerate(2, 700);
-          if (!layout) layout = tryGenerate(1, 900);
+          let layout = tryGenerate(original, 800);
+          if (!layout) layout = tryGenerate(2, 1400);
+          if (!layout) layout = tryGenerate(1, 2000);
           layoutConfig.minPairDistance = original;
 
           if (layout) {
@@ -2293,14 +2295,21 @@
         updateDifficulty();
         updateBoardConfig();
         currentLayout = null;
+        resetToken += 1;
+        const token = resetToken;
         if (layoutSpinner) layoutSpinner.classList.remove("hidden");
-        requestAnimationFrame(() => {
+        setTimeout(() => {
+          if (token !== resetToken) return;
           const layout = generateLayout();
+          if (!layout || layout.length === 0) {
+            setTimeout(() => resetAll(), 120);
+            return;
+          }
           applyLayout(layout);
           renderStage();
           connectionHistory = [];
           if (layoutSpinner) layoutSpinner.classList.add("hidden");
-        });
+        }, 0);
       }
 
       function resetLinesOnly() {
