@@ -1516,26 +1516,29 @@
           }
         }
 
-        if (currentStage.id === 4 || currentStage.id === 5 || currentStage.id === 6 || currentStage.id === 7) {
+        if (currentStage.id === 4 || currentStage.id === 5 || currentStage.id === 6 || currentStage.id === 7 || currentStage.id === 8) {
           const chordI = ["do", "mi", "sol"].map((noteId) => getNoteNameForNoteId(noteId));
           const chordIV = ["fa", "la", "do2"].map((noteId) => getNoteNameForNoteId(noteId));
+          const chordV = ["sol", "ti", "re"].map((noteId) => getNoteNameForNoteId(noteId));
+          const chordVHigh = ["sol2", "ti", "re"].map((noteId) => getNoteNameForNoteId(noteId));
           if (currentStage.id === 4) {
             renderChordAt(chordI, staffLayout.chordXProgression[0], "I");
             renderChordAt(chordIV, staffLayout.chordXProgression[1], "IV");
           } else if (currentStage.id === 5) {
-            const chordV = ["sol", "ti", "re"].map((noteId) => getNoteNameForNoteId(noteId));
             renderChordAt(chordIV, staffLayout.chordXProgression[0], "IV");
             renderChordAt(chordV, staffLayout.chordXProgression[1], "V");
           } else if (currentStage.id === 6) {
-            const chordV = ["sol", "ti", "re"].map((noteId) => getNoteNameForNoteId(noteId));
             const chordIStage6 = ["do", "mi", "sol2"].map((noteId) => getNoteNameForNoteId(noteId));
             renderChordAt(chordV, staffLayout.chordXProgression[0], "V");
             renderChordAt(chordIStage6, staffLayout.chordXProgression[1], "I");
-          } else {
-            const chordV = ["sol2", "ti", "re"].map((noteId) => getNoteNameForNoteId(noteId));
+          } else if (currentStage.id === 7) {
             renderChordAt(chordI, staffLayout.chordXProgression[0], "I");
             renderChordAt(chordIV, staffLayout.chordXProgression[1], "IV");
-            renderChordAt(chordV, staffLayout.chordXProgression[2], "V");
+            renderChordAt(chordVHigh, staffLayout.chordXProgression[2], "V");
+          } else {
+            renderChordAt(chordIV, staffLayout.chordXProgression[0], "IV");
+            renderChordAt(chordVHigh, staffLayout.chordXProgression[1], "V");
+            renderChordAt(chordI, staffLayout.chordXProgression[2], "I");
           }
         } else {
           renderChordAt(getStageNoteNames(), staffLayout.chordX, "I");
