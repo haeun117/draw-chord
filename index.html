@@ -1567,7 +1567,9 @@
         staffWrapper.classList.add("hidden");
         if (requiredNote) {
           const noteName = getNoteNameForNoteId(requiredNote);
-          statusText.textContent = `${formatNoteLabel(noteName)} 쌍을 연결하세요`;
+          const color = noteMeta[requiredNote]?.color || "#38bdf8";
+          const icon = `<span class="mr-2 inline-block h-4 w-4 rounded-full align-middle" style="background:${color}"></span>`;
+          statusText.innerHTML = `${icon}${formatNoteLabel(noteName)} 쌍을 연결하세요`;
         }
       }
 
