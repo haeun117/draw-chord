@@ -1819,15 +1819,16 @@
       }
 
       function isLayoutComplex(layout) {
-        let adjacentPairs = 0;
         currentStage.notes.forEach((note) => {
           const pair = layout.filter((node) => node.note === note);
           if (pair.length !== 2) return;
-          if (manhattan(pair[0], pair[1]) === 1) {
-            adjacentPairs += 1;
-          }
+          const dx = Math.abs(pair[0].col - pair[1].col);
+          const dy = Math.abs(pair[0].row - pair[1].row);
+          const isAdjacent = dx + dy === 1;
+          const isDiagonal = dx === 1 && dy === 1;
+          const isStraightLine = dx === 0 || dy === 0;
+          if (isAdjacent || isDiagonal || isStraightLine) return false;
         });
-        if (adjacentPairs > 1) return false;
 
         const rowSet = new Set();
         const colSet = new Set();
