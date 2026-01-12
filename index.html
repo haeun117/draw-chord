@@ -1700,7 +1700,7 @@
           const center = cellCenter(node.col, node.row, stage.gridSize);
           const pos = viewBoxToPercent(center);
           const element = document.createElement("div");
-          const isStage7 = currentStage.id === 7;
+          const isStage7 = currentStage.id === 7 || currentStage.id === 8;
           element.className = isStage7
             ? "note absolute flex h-10 w-10 items-center justify-center rounded-full text-[10px] font-bold text-white shadow"
             : "note absolute flex h-12 w-12 items-center justify-center rounded-full text-xs font-bold text-white shadow";
