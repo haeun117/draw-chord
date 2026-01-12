@@ -1511,9 +1511,12 @@
           const chordIV = ["fa", "la", "do2"].map((noteId) => getNoteNameForNoteId(noteId));
           const chordV = ["sol", "ti", "re"].map((noteId) => getNoteNameForNoteId(noteId));
           const chordVHigh = ["sol2", "ti", "re"].map((noteId) => getNoteNameForNoteId(noteId));
-          const progressionX = (currentStage.id === 7 || currentStage.id === 8)
-            ? staffLayout.chordXProgression.map((x) => x - 37)
-            : staffLayout.chordXProgression;
+          let progressionX = staffLayout.chordXProgression;
+          if (currentStage.id === 7 || currentStage.id === 8) {
+            progressionX = staffLayout.chordXProgression.map((x) => x - 37);
+          } else if (currentStage.id === 4 || currentStage.id === 5 || currentStage.id === 6) {
+            progressionX = staffLayout.chordXProgression.map((x) => x - 4);
+          }
           if (currentStage.id === 4) {
             renderChordAt(chordI, progressionX[0], "I");
             renderChordAt(chordIV, progressionX[1], "IV");
