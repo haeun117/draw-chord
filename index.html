@@ -2998,6 +2998,8 @@
         renderStage();
       });
 
+      bestRuns = loadBestRuns();
+      updateSummaryUI();
       populateStages();
       populateKeys();
       document.querySelectorAll(".part-card").forEach((card) => {
