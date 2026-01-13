@@ -1752,6 +1752,18 @@
         });
       }
 
+      function showStageCompleteOverlay() {
+        if (!stageCompleteOverlay) return;
+        if (stageCompleteNumber) stageCompleteNumber.textContent = String(currentStage.id);
+        if (stageCompleteTitle) stageCompleteTitle.textContent = `${currentStage.title} 완료!`;
+        if (stageCompleteSubtitle) stageCompleteSubtitle.textContent = `${currentStage.chordName} 완성!`;
+        stageCompleteOverlay.classList.remove("hidden");
+      }
+
+      function hideStageCompleteOverlay() {
+        stageCompleteOverlay?.classList.add("hidden");
+      }
+
       function updateStatusText() {
         const requiredNote = getNextRequiredNote();
         if (state.completedPairs.size === currentStage.notes.length) {
@@ -1759,10 +1771,16 @@
           statusText.innerHTML = `<span class="status-complete block">${currentStage.chordName} 완성!</span><span class="mt-2 block text-slate-500">(${orderText})</span>`;
           statusHintPersist = false;
           updateRequiredNoteHighlight(null);
+          if (currentStage.id <= 3) {
+            showStageCompleteOverlay();
+          } else {
+            hideStageCompleteOverlay();
+          }
           staffWrapper.classList.remove("hidden");
           renderStaff();
           return;
         }
+        hideStageCompleteOverlay();
         if (statusHintPersist) {
           return;
         }
