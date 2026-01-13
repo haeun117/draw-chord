@@ -2064,21 +2064,20 @@
         if (!stageCompleteOverlay) return;
         if (stageCompleteTitle) stageCompleteTitle.textContent = `${currentStage.title} 완료!`;
         if (lastRunResult) {
-          if (stageCompleteScore) stageCompleteScore.textContent = String(lastRunResult.score);
-          if (stageCompleteOneStroke) {
-            const perfect = lastRunResult.oneStrokeClear && lastRunResult.redLineCount === 0;
-            stageCompleteOneStroke.textContent = perfect ? "O" : "X";
-          }
-          if (stageCompleteMistakes) {
-            const mistakes = lastRunResult.redLineCount;
-            stageCompleteMistakes.textContent = `-${mistakes}`;
-          }
           if (stageCompleteStars) {
             const count = lastRunResult.stars;
             stageCompleteStars.innerHTML = Array.from({ length: count }, (_, idx) => {
               const delay = (idx * 0.18).toFixed(2);
               return `<span class="star-on" style="animation-delay:${delay}s, ${delay}s;"></span>`;
             }).join("");
+          }
+          if (stageCompleteTitle) {
+            const titleMap = {
+              3: "Perfect Clear!",
+              2: "Clean Connection!",
+              1: "Nice Connection!"
+            };
+            stageCompleteTitle.textContent = titleMap[lastRunResult.stars] || "Nice Connection!";
           }
         }
         stageCompleteOverlay.classList.remove("hidden");
