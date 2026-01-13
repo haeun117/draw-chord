@@ -1762,7 +1762,7 @@
             const style = getNoteStyle(noteId);
             if (style.shapeClass === "note-shape-diamond") {
               glow?.classList.add("note-highlight");
-              glow?.style.setProperty("--glow-color", style.color);
+              glow?.style.setProperty("--glow-color", "#ffffff");
             } else {
               element.classList.add("note-highlight");
               element.style.setProperty("--glow-color", style.color);
