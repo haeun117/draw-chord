@@ -1602,6 +1602,18 @@
         }
       }
 
+      function updateRequiredNoteHighlight(noteId) {
+        nodeElements.forEach(({ element, note }) => {
+          element.classList.remove("note-highlight");
+          element.style.removeProperty("--glow-color");
+          if (noteId && note === noteId) {
+            const style = getNoteStyle(noteId);
+            element.classList.add("note-highlight");
+            element.style.setProperty("--glow-color", style.color);
+          }
+        });
+      }
+
       function updateStatusText() {
         const requiredNote = getNextRequiredNote();
         if (state.completedPairs.size === currentStage.notes.length) {
