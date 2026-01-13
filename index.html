@@ -1997,10 +1997,12 @@
         if (lastRunResult) {
           if (stageCompleteScore) stageCompleteScore.textContent = String(lastRunResult.score);
           if (stageCompleteOneStroke) {
-            stageCompleteOneStroke.textContent = `⚡ Perfect Draw: ${lastRunResult.oneStrokeClear ? "O" : "X"}`;
+            const perfect = lastRunResult.oneStrokeClear && lastRunResult.redLineCount === 0;
+            stageCompleteOneStroke.textContent = perfect ? "O" : "X";
           }
           if (stageCompleteMistakes) {
-            stageCompleteMistakes.textContent = `💥 Mistakes: ${lastRunResult.redLineCount}`;
+            const mistakes = lastRunResult.redLineCount;
+            stageCompleteMistakes.textContent = `-${mistakes}`;
           }
           if (stageCompleteStars) {
             const stars = formatStars(lastRunResult.stars);
