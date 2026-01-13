@@ -1592,8 +1592,8 @@
         staffWrapper.classList.add("hidden");
         if (requiredNote) {
           const noteName = getNoteNameForNoteId(requiredNote);
-          const color = noteMeta[requiredNote]?.color || "#38bdf8";
-          const icon = `<span class="mr-2 inline-block h-4 w-4 rounded-full align-middle" style="background:${color}"></span>`;
+          const style = getNoteStyle(requiredNote);
+          const icon = `<span class="mr-2 inline-block h-4 w-4 align-middle ${style.shapeClass}" style="background:${style.color}"></span>`;
           statusText.innerHTML = `${icon}${formatNoteLabel(noteName)} 쌍을 연결하세요`;
         }
       }
@@ -1601,10 +1601,9 @@
       function showStatusHint(noteId) {
         if (!statusText) return;
         const noteName = getNoteNameForNoteId(noteId);
-        const colorName = noteColorNames[noteId] || "";
-        const prefix = colorName ? `${colorName} ` : "";
-        const color = noteMeta[noteId]?.color || "#38bdf8";
-        const icon = `<span class="mr-2 inline-block h-4 w-4 rounded-full align-middle" style="background:${color}"></span>`;
+        const style = getNoteStyle(noteId);
+        const prefix = style.name ? `${style.name} ` : "";
+        const icon = `<span class="mr-2 inline-block h-4 w-4 align-middle ${style.shapeClass}" style="background:${style.color}"></span>`;
         statusText.innerHTML = `${icon}${prefix}${formatNoteLabel(noteName)}부터 연결하세요`;
         statusHintPersist = true;
       }
