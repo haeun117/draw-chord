@@ -2849,6 +2849,7 @@
         last.polyline.remove();
         unmarkPathOccupied(last.path);
         state.completedPairs.delete(last.note);
+        state.redLineCount += 1;
         updateStatusText();
       });
       resetLinesButton.addEventListener("click", () => {
