@@ -1937,7 +1937,9 @@
           const glow = document.createElement("div");
           const isStage7 = currentStage.id === 7 || currentStage.id === 8;
           const style = getNoteStyle(node.note);
-          glow.className = isStage7 ? "note-glow absolute h-10 w-10" : "note-glow absolute h-12 w-12";
+          const glowSizeClass = isStage7 ? "h-10 w-10" : "h-12 w-12";
+          const glowShapeClass = style.shapeClass === "note-shape-diamond" ? "note-glow-diamond" : "";
+          glow.className = `note-glow absolute ${glowSizeClass} ${glowShapeClass}`.trim();
           element.className = isStage7
             ? `note absolute flex h-10 w-10 items-center justify-center text-[10px] font-bold shadow ${style.shapeClass}`
             : `note absolute flex h-12 w-12 items-center justify-center text-xs font-bold shadow ${style.shapeClass}`;
