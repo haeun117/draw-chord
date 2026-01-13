@@ -549,6 +549,24 @@
           filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.95));
         }
       }
+      @keyframes completePop {
+        0% {
+          transform: translateY(16px) scale(0.9);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes ribbonShine {
+        0% {
+          transform: translateX(-120%);
+        }
+        100% {
+          transform: translateX(120%);
+        }
+      }
       .board {
         touch-action: none;
         background-image:
@@ -562,6 +580,109 @@
       }
       .note-highlight {
         animation: sparklePulse 1s ease-in-out infinite;
+      }
+      .stage-complete-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 60;
+        padding: 20px;
+      }
+      .stage-complete-card {
+        position: relative;
+        width: min(92vw, 420px);
+        padding: 36px 28px 30px;
+        border-radius: 28px;
+        background: linear-gradient(180deg, #fef3c7 0%, #fcd34d 55%, #f59e0b 100%);
+        box-shadow: 0 22px 50px rgba(15, 23, 42, 0.35);
+        border: 4px solid #fbbf24;
+        text-align: center;
+        overflow: hidden;
+        animation: completePop 0.4s ease-out;
+      }
+      .stage-complete-burst {
+        position: absolute;
+        inset: -40px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 65%),
+          repeating-conic-gradient(rgba(255, 255, 255, 0.35) 0 8deg, rgba(255, 255, 255, 0) 8deg 16deg);
+        opacity: 0.6;
+        z-index: 0;
+      }
+      .stage-complete-star {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        margin: 0 auto 12px;
+        background: linear-gradient(180deg, #fff7ae 0%, #fde047 48%, #f59e0b 100%);
+        -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 6 C54 6 58 10 60 14 L69 31 C70 33 73 35 76 35 L95 36 C99 36 100 40 97 43 L83 56 C81 58 80 61 81 64 L86 83 C87 87 84 90 80 88 L62 78 C60 77 57 77 55 78 L37 88 C33 90 30 87 31 83 L36 64 C37 61 36 58 34 56 L20 43 C17 40 18 36 22 36 L41 35 C44 35 47 33 48 31 L57 14 C59 10 46 6 50 6 Z'/></svg>");
+        mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 6 C54 6 58 10 60 14 L69 31 C70 33 73 35 76 35 L95 36 C99 36 100 40 97 43 L83 56 C81 58 80 61 81 64 L86 83 C87 87 84 90 80 88 L62 78 C60 77 57 77 55 78 L37 88 C33 90 30 87 31 83 L36 64 C37 61 36 58 34 56 L20 43 C17 40 18 36 22 36 L41 35 C44 35 47 33 48 31 L57 14 C59 10 46 6 50 6 Z'/></svg>");
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        display: grid;
+        place-items: center;
+        color: #7c2d12;
+        font-size: 44px;
+        font-weight: 900;
+        text-shadow: 0 3px 0 rgba(255, 255, 255, 0.8);
+        z-index: 1;
+      }
+      .stage-complete-ribbon {
+        position: relative;
+        display: inline-block;
+        margin: 4px auto 14px;
+        padding: 10px 28px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        color: #fff7ed;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        box-shadow: 0 12px 20px rgba(127, 29, 29, 0.35);
+        overflow: hidden;
+        z-index: 1;
+      }
+      .stage-complete-ribbon::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+        animation: ribbonShine 1.6s linear infinite;
+      }
+      .stage-complete-title {
+        position: relative;
+        font-size: 22px;
+        font-weight: 800;
+        color: #7c2d12;
+        z-index: 1;
+      }
+      .stage-complete-subtitle {
+        position: relative;
+        margin-top: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #7c2d12;
+        z-index: 1;
+      }
+      .stage-complete-button {
+        position: relative;
+        margin-top: 18px;
+        padding: 10px 30px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #fef08a 0%, #facc15 100%);
+        color: #7c2d12;
+        font-weight: 800;
+        box-shadow: 0 8px 16px rgba(120, 53, 15, 0.35);
+        z-index: 1;
       }
       .note-shape-circle {
         border-radius: 9999px;
