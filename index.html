@@ -2591,6 +2591,15 @@
       });
       stageCompleteButton?.addEventListener("click", () => {
         hideStageCompleteOverlay();
+        if (currentStageIndex < stages.length - 1) {
+          currentStageIndex += 1;
+          currentStage = stages[currentStageIndex];
+          state.key = "C";
+          if (keySelect) keySelect.value = state.key;
+          if (stageSelect) stageSelect.value = String(currentStageIndex);
+          resetAll();
+          updateFrequencies();
+        }
       });
       stageCompleteOverlay?.addEventListener("click", (event) => {
         if (event.target === stageCompleteOverlay) {
