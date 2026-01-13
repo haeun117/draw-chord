@@ -1416,7 +1416,8 @@
 
       function updateSummaryUI() {
         const total = getTotalSummary();
-        document.getElementById("summaryTotalStars").textContent = String(total.starsSum);
+        const totalPoints = total.starsSum * 100;
+        document.getElementById("summaryTotalStars").textContent = String(totalPoints);
       }
 
       function getStageBestMarkup(stageId) {
