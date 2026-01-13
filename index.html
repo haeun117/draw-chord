@@ -725,17 +725,18 @@
         mask-size: 100% 100%;
         animation: starPop 0.45s ease-out forwards, starTwinkle 1.2s ease-in-out infinite;
         opacity: 0;
+        transform-style: preserve-3d;
         box-shadow:
-          inset -6px -8px 0 rgba(217, 119, 6, 0.55),
-          inset 6px 6px 0 rgba(255, 255, 255, 0.6),
-          0 8px 0 rgba(217, 119, 6, 0.6),
-          0 16px 20px rgba(15, 23, 42, 0.35);
+          inset -10px -12px 0 rgba(217, 119, 6, 0.6),
+          inset 8px 8px 0 rgba(255, 255, 255, 0.75),
+          0 10px 0 rgba(217, 119, 6, 0.7),
+          0 20px 24px rgba(15, 23, 42, 0.4);
       }
       .stage-complete-top-stars .star-on::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at 28% 28%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 55%);
+        background: radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 60%);
         -webkit-mask-image: var(--star-mask);
         mask-image: var(--star-mask);
         -webkit-mask-repeat: no-repeat;
@@ -751,12 +752,12 @@
         content: "";
         position: absolute;
         left: 50%;
-        top: 74%;
-        width: 60%;
-        height: 14%;
+        top: 78%;
+        width: 70%;
+        height: 18%;
         background: rgba(15, 23, 42, 0.35);
-        filter: blur(6px);
-        transform: translateX(-50%);
+        filter: blur(8px);
+        transform: translateX(-50%) scaleY(0.9);
         z-index: -1;
       }
       .stage-complete-rank {
