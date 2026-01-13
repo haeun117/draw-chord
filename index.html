@@ -3055,6 +3055,17 @@
         document.getElementById("homeScreen").classList.remove("hidden");
         updateSummaryUI();
       });
+      stageClaimButton?.addEventListener("click", () => {
+        if (!lastRunResult) return;
+        const best = bestRuns[lastRunResult.stageId] || {};
+        const claimed = getClaimedStars(best);
+        const earned = lastRunResult.stars;
+        if (earned <= claimed) return;
+        bestRuns[lastRunResult.stageId] = { ...best, claimedStars: earned };
+        saveBestRuns();
+        updateSummaryUI();
+        refreshClaimButton();
+      });
       stageCompleteOverlay?.addEventListener("click", (event) => {
         if (event.target === stageCompleteOverlay) {
           hideStageCompleteOverlay();
