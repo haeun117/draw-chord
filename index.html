@@ -2070,6 +2070,12 @@
         stageCompleteOverlay.classList.remove("hidden");
       }
 
+      function finalizeRun() {
+        lastRunResult = buildRunResult(currentStage.id);
+        updateBestRun(lastRunResult);
+        updateSummaryUI();
+      }
+
       function hideStageCompleteOverlay() {
         stageCompleteOverlay?.classList.add("hidden");
       }
