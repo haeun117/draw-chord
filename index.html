@@ -2805,6 +2805,7 @@
         if (state.completedPairs.has(note)) return;
 
         ensureAudioContext();
+        state.strokesUsed += 1;
         state.isDrawing = true;
         state.invalidPath = false;
         state.startNodeId = nodeId;
