@@ -1094,6 +1094,7 @@
           <div class="stage-complete-burst"></div>
           <div id="stageCompleteTopStars" class="stage-complete-top-stars"></div>
           <div class="stage-complete-ribbon">Stage Clear!</div>
+          <p id="stageCompleteTitle" class="stage-complete-title">Nice Connection!</p>
           <div class="stage-complete-actions">
             <button id="stageRetryButton" type="button" class="stage-complete-button secondary">Retry</button>
             <button id="stageNextButton" type="button" class="stage-complete-button">Next Stage</button>
@@ -2062,7 +2063,6 @@
 
       function showStageCompleteOverlay() {
         if (!stageCompleteOverlay) return;
-        if (stageCompleteTitle) stageCompleteTitle.textContent = `${currentStage.title} 완료!`;
         if (lastRunResult) {
           if (stageCompleteStars) {
             const count = lastRunResult.stars;
