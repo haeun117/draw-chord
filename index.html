@@ -582,6 +582,9 @@
       .note-highlight {
         animation: sparklePulse 1s ease-in-out infinite;
         position: relative;
+        outline: 3px solid rgba(255, 255, 255, 0.95);
+        outline-offset: 2px;
+        filter: drop-shadow(0 0 12px var(--glow-color, rgba(255, 255, 255, 0.9)));
       }
       .note-highlight::after {
         content: "";
