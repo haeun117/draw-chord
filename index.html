@@ -1358,6 +1358,14 @@
         document.getElementById("summaryTotalStars").textContent = `${total.starsSum}/27`;
         document.getElementById("summaryTotalRank").textContent = total.avgRank;
       }
+
+      function getStageBestMarkup(stageId) {
+        const best = bestRuns[stageId];
+        if (!best) {
+          return `<span class="stage-best"><span class="best-rank">—</span><span class="best-stars">☆☆☆</span><span class="best-score">—</span></span>`;
+        }
+        return `<span class="stage-best"><span class="best-rank">${best.rank}</span><span class="best-stars">${formatStars(best.stars)}</span><span class="best-score">${best.score}</span></span>`;
+      }
       let statusHintPersist = false;
       let resetToken = 0;
       const hoverPanel = document.getElementById("hoverPanel");
