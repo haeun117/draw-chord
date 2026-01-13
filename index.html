@@ -885,7 +885,8 @@
         <div class="stage-complete-card">
           <div class="stage-complete-burst"></div>
           <div class="stage-complete-star"></div>
-          <div id="stageCompleteRibbon" class="stage-complete-ribbon">Stage 1 Clear!</div>
+          <div class="stage-complete-ribbon">Stage Clear!</div>
+          <p id="stageCompleteTitle" class="stage-complete-title">Stage 1 완료!</p>
           <button id="stageCompleteButton" type="button" class="stage-complete-button">다음 Stage</button>
         </div>
       </div>
@@ -905,7 +906,7 @@
       const keySelect = document.getElementById("keySelect");
       const statusText = document.getElementById("statusText");
       const stageCompleteOverlay = document.getElementById("stageCompleteOverlay");
-      const stageCompleteRibbon = document.getElementById("stageCompleteRibbon");
+      const stageCompleteTitle = document.getElementById("stageCompleteTitle");
       const stageCompleteButton = document.getElementById("stageCompleteButton");
       const chordTitle = document.getElementById("chordTitle");
       const missionSteps = document.getElementById("missionSteps");
@@ -1742,7 +1743,7 @@
 
       function showStageCompleteOverlay() {
         if (!stageCompleteOverlay) return;
-        if (stageCompleteRibbon) stageCompleteRibbon.textContent = `Stage ${currentStage.id} Clear!`;
+        if (stageCompleteTitle) stageCompleteTitle.textContent = `${currentStage.title} 완료!`;
         stageCompleteOverlay.classList.remove("hidden");
       }
 
