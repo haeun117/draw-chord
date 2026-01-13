@@ -1093,8 +1093,7 @@
         <div class="stage-complete-card">
           <div class="stage-complete-burst"></div>
           <div id="stageCompleteTopStars" class="stage-complete-top-stars"></div>
-          <div class="stage-complete-ribbon">Stage Clear!</div>
-          <p id="stageCompleteTitle" class="stage-complete-title">Nice Connection!</p>
+          <div id="stageCompleteRibbon" class="stage-complete-ribbon">Nice Connection!</div>
           <div class="stage-complete-actions">
             <button id="stageRetryButton" type="button" class="stage-complete-button secondary">Retry</button>
             <button id="stageNextButton" type="button" class="stage-complete-button">Next Stage</button>
@@ -1118,7 +1117,7 @@
       const keySelect = document.getElementById("keySelect");
       const statusText = document.getElementById("statusText");
       const stageCompleteOverlay = document.getElementById("stageCompleteOverlay");
-      const stageCompleteTitle = document.getElementById("stageCompleteTitle");
+      const stageCompleteRibbon = document.getElementById("stageCompleteRibbon");
       const stageCompleteStars = document.getElementById("stageCompleteTopStars");
       const stageRetryButton = document.getElementById("stageRetryButton");
       const stageNextButton = document.getElementById("stageNextButton");
@@ -2071,13 +2070,13 @@
               return `<span class="star-on" style="animation-delay:${delay}s, ${delay}s;"></span>`;
             }).join("");
           }
-          if (stageCompleteTitle) {
+          if (stageCompleteRibbon) {
             const titleMap = {
               3: "Perfect Clear!",
               2: "Clean Connection!",
               1: "Nice Connection!"
             };
-            stageCompleteTitle.textContent = titleMap[lastRunResult.stars] || "Nice Connection!";
+            stageCompleteRibbon.textContent = titleMap[lastRunResult.stars] || "Nice Connection!";
           }
         }
         stageCompleteOverlay.classList.remove("hidden");
