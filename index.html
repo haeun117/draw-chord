@@ -1742,7 +1742,7 @@
 
       function showStageCompleteOverlay() {
         if (!stageCompleteOverlay) return;
-        if (stageCompleteTitle) stageCompleteTitle.textContent = `${currentStage.title} 완료!`;
+        if (stageCompleteRibbon) stageCompleteRibbon.textContent = `Stage ${currentStage.id} Clear!`;
         stageCompleteOverlay.classList.remove("hidden");
       }
 
