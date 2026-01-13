@@ -2290,6 +2290,15 @@
         state.invalidPath = false;
       }
 
+      function resetAttemptStats() {
+        state.redLineCount = 0;
+        state.extraLineCount = 0;
+        state.totalLines = 0;
+        state.strokesUsed = 0;
+        state.oneStrokeClear = false;
+        lastRunResult = null;
+      }
+
       function edgeKey(a, b) {
         const keyA = `${a.col},${a.row}`;
         const keyB = `${b.col},${b.row}`;
