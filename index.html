@@ -2838,6 +2838,7 @@
         state.isDrawing = false;
 
         if (state.invalidPath || !state.endNodeId) {
+          state.redLineCount += 1;
           setActiveLine([], "#ef4444");
           clearActiveLine();
           updateStatusText();
@@ -2857,6 +2858,8 @@
         committedLines.append(polyline);
 
         markPathOccupied(state.pathCells);
+        state.totalLines += 1;
+        state.extraLineCount = Math.max(0, state.totalLines - currentStage.notes.length);
         state.completedPairs.add(note);
         connectionHistory.push({
           polyline,
@@ -2864,6 +2867,8 @@
           note
         });
         if (state.completedPairs.size === currentStage.notes.length) {
+          state.oneStrokeClear = state.strokesUsed === 1;
+          finalizeRun();
           playChord();
         }
         clearActiveLine();
