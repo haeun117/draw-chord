@@ -1216,8 +1216,8 @@
             .map((noteId, index) => {
               const label = formatNoteLabel(getNoteNameForNoteId(noteId));
               const prefix = index === 0 ? "시작" : index === currentStage.notes.length - 1 ? "마지막" : "다음";
-              const color = noteMeta[noteId]?.color || "#94a3b8";
-              return `<li>${prefix}: <span class="inline-flex items-center gap-2"><span class="inline-block h-3 w-3 rounded-full" style="background:${color}"></span>${label}</span></li>`;
+              const style = getNoteStyle(noteId);
+              return `<li>${prefix}: <span class="inline-flex items-center gap-2"><span class="inline-block h-3 w-3 ${style.shapeClass}" style="background:${style.color}"></span>${label}</span></li>`;
             })
             .join("");
         }
