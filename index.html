@@ -920,7 +920,6 @@
       const keySelect = document.getElementById("keySelect");
       const statusText = document.getElementById("statusText");
       const stageCompleteOverlay = document.getElementById("stageCompleteOverlay");
-      const stageCompleteNumber = document.getElementById("stageCompleteNumber");
       const stageCompleteTitle = document.getElementById("stageCompleteTitle");
       const stageCompleteSubtitle = document.getElementById("stageCompleteSubtitle");
       const stageCompleteButton = document.getElementById("stageCompleteButton");
@@ -1759,7 +1758,6 @@
 
       function showStageCompleteOverlay() {
         if (!stageCompleteOverlay) return;
-        if (stageCompleteNumber) stageCompleteNumber.textContent = String(currentStage.id);
         if (stageCompleteTitle) stageCompleteTitle.textContent = `${currentStage.title} 완료!`;
         if (stageCompleteSubtitle) stageCompleteSubtitle.textContent = `${currentStage.chordName} 완성!`;
         stageCompleteOverlay.classList.remove("hidden");
