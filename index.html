@@ -673,6 +673,60 @@
         overflow: hidden;
         z-index: 1;
       }
+      .stage-complete-rank {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 72px;
+        height: 72px;
+        margin: 8px auto 6px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.7);
+        border: 3px solid rgba(255, 255, 255, 0.85);
+        color: #ffffff;
+        font-size: 32px;
+        font-weight: 900;
+        z-index: 1;
+      }
+      .stage-complete-stars {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        font-size: 18px;
+        color: #fbbf24;
+        z-index: 1;
+      }
+      .stage-complete-stars .star-off {
+        color: rgba(148, 163, 184, 0.6);
+      }
+      .stage-complete-score {
+        position: relative;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #ffffff;
+        z-index: 1;
+      }
+      .stage-complete-details {
+        position: relative;
+        margin-top: 10px;
+        display: grid;
+        gap: 6px;
+        text-align: left;
+        font-size: 13px;
+        font-weight: 600;
+        color: #e2e8f0;
+        z-index: 1;
+      }
+      .stage-complete-actions {
+        position: relative;
+        margin-top: 18px;
+        display: grid;
+        gap: 8px;
+        z-index: 1;
+      }
       .stage-complete-ribbon::after {
         content: "";
         position: absolute;
@@ -692,7 +746,8 @@
       }
       .stage-complete-button {
         position: relative;
-        margin-top: 18px;
+        width: 100%;
+        margin-top: 0;
         padding: 10px 30px;
         border-radius: 999px;
         background: linear-gradient(180deg, #0ea5e9 0%, #0284c7 100%);
@@ -700,6 +755,15 @@
         font-weight: 800;
         box-shadow: 0 8px 16px rgba(30, 64, 175, 0.25);
         z-index: 1;
+      }
+      .stage-complete-button.secondary {
+        background: rgba(15, 23, 42, 0.7);
+        box-shadow: none;
+      }
+      .stage-complete-button.ghost {
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        box-shadow: none;
       }
       .note-shape-circle {
         border-radius: 9999px;
