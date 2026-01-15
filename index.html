@@ -2190,16 +2190,16 @@
         return "화음";
       }
 
-      function showChordComplete(type) {
-        if (!statusText) return;
+      function showChordToast(type) {
+        if (!chordCompleteOverlay || !chordCompleteMessage) return;
         const label = getChordLabel(type);
-        statusText.innerHTML = `<span class="status-complete block">${label} 완성!</span>`;
-        staffWrapper.classList.remove("hidden");
-        renderStaff();
-        statusHintPersist = true;
+        chordCompleteMessage.textContent = `${label} 완성!`;
+        chordCompleteOverlay.classList.remove("hidden");
+        chordCompleteMessage.style.animation = "none";
+        void chordCompleteMessage.offsetHeight;
+        chordCompleteMessage.style.animation = "";
         setTimeout(() => {
-          statusHintPersist = false;
-          updateStatusText();
+          chordCompleteOverlay.classList.add("hidden");
         }, 1200);
       }
 
@@ -2211,7 +2211,7 @@
           const isComplete = groupNotes.every((note) => state.completedPairs.has(note));
           if (isComplete) {
             state.completedChordGroups.add(idx);
-            showChordComplete(type);
+            showChordToast(type);
           }
         });
       }
