@@ -2296,13 +2296,14 @@
             staffWrapper.classList.remove("hidden");
             renderStaff();
             statusText.innerHTML = `<span class="font-semibold text-slate-800">${currentStage.chordName} 완성!</span>`;
-            toggleListenNudge(true);
+            replayButton?.classList.add("replay-attention");
             return;
           }
+          replayButton?.classList.remove("replay-attention");
           showStageCompleteOverlay();
           return;
         }
-        toggleListenNudge(false);
+        replayButton?.classList.remove("replay-attention");
         hideStageCompleteOverlay();
         if (statusHintPersist) {
           return;
