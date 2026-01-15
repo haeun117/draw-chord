@@ -568,6 +568,24 @@
           transform: translateX(120%);
         }
       }
+      @keyframes chordToast {
+        0% {
+          opacity: 0;
+          transform: translateY(8px) scale(0.98);
+        }
+        20% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        80% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-6px) scale(0.98);
+        }
+      }
       @keyframes starPop {
         0% {
           transform: scale(0.2) rotate(-12deg);
@@ -637,6 +655,29 @@
         justify-content: center;
         z-index: 60;
         padding: 20px;
+      }
+      .chord-complete-overlay {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(2, 6, 23, 0.45);
+        z-index: 55;
+        pointer-events: none;
+      }
+      .chord-complete-card {
+        padding: 14px 26px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 2px solid rgba(148, 197, 255, 0.45);
+        color: #e0f2fe;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        backdrop-filter: blur(8px);
+        animation: chordToast 1.2s ease-out;
       }
       .stage-complete-card {
         position: relative;
