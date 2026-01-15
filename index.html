@@ -2318,11 +2318,13 @@
             staffWrapper.classList.remove("hidden");
             renderStaff();
             statusText.innerHTML = `<span class="status-complete block">${currentStage.chordName} 완성!</span>`;
+            toggleListenNudge(true);
             return;
           }
           showStageCompleteOverlay();
           return;
         }
+        toggleListenNudge(false);
         hideStageCompleteOverlay();
         if (statusHintPersist) {
           return;
