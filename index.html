@@ -2226,7 +2226,7 @@
       }
 
       function checkChordCompletion() {
-        if (!currentStage.chordTypes || currentStage.chordTypes.length <= 1) return;
+        if (!currentStage.chordTypes) return;
         currentStage.chordTypes.forEach((type, idx) => {
           if (state.completedChordGroups.has(idx)) return;
           const groupNotes = getChordGroupNotes(idx);
