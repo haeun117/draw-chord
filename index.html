@@ -1321,6 +1321,7 @@
         endNodeId: null,
         invalidPath: false,
         completedPairs: new Set(),
+        completedChordGroups: new Set(),
         key: "C",
         soundOn: true,
         redLineCount: 0,
@@ -2380,6 +2381,7 @@
         state.totalLines = 0;
         state.strokesUsed = 0;
         state.oneStrokeClear = false;
+        state.completedChordGroups = new Set();
         lastRunResult = null;
       }
 
