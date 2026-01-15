@@ -3614,6 +3614,15 @@
           hideStageCompleteOverlay();
         }
       });
+      openRankingButton?.addEventListener("click", () => {
+        document.getElementById("homeScreen").classList.add("hidden");
+        rankingScreen?.classList.remove("hidden");
+        refreshLeaderboard();
+      });
+      closeRankingButton?.addEventListener("click", () => {
+        rankingScreen?.classList.add("hidden");
+        document.getElementById("homeScreen").classList.remove("hidden");
+      });
       leaderboardForm?.addEventListener("submit", (event) => {
         event.preventDefault();
         if (!playerNameInput) return;
