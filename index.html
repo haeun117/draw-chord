@@ -1262,25 +1262,24 @@
             <h1 class="home-title mt-3 text-4xl font-semibold text-white">Draw Chord</h1>
             <p class="mt-2 text-sm text-slate-300">난이도에 따라 스테이지를 선택하고, 단계별로 화음을 연결해 보세요.</p>
           </div>
-          <div
-            id="totalStarsHud"
-            class="total-stars-hud absolute left-4 top-6"
-          >
-            <span class="total-stars-badge">★</span>
-            <span id="summaryTotalStars" class="total-stars-score">0</span>
-            <button id="openRankingButton" type="button" class="rank-link-button">랭킹보기</button>
+          <div class="absolute bottom-6 left-4 flex flex-col items-start gap-3">
+            <div id="totalStarsHud" class="total-stars-hud">
+              <span class="total-stars-badge">★</span>
+              <span id="summaryTotalStars" class="total-stars-score">0</span>
+              <button id="openRankingButton" type="button" class="rank-link-button">랭킹보기</button>
+            </div>
+            <form id="homeNameForm" class="leaderboard-form home-form">
+              <input
+                id="homePlayerNameInput"
+                class="leaderboard-input"
+                type="text"
+                maxlength="12"
+                placeholder="플레이어 이름"
+                autocomplete="off"
+              />
+              <button id="homeSaveNameButton" class="leaderboard-button" type="submit">이름 저장</button>
+            </form>
           </div>
-          <form id="homeNameForm" class="leaderboard-form home-form absolute left-4 top-[72px]">
-            <input
-              id="homePlayerNameInput"
-              class="leaderboard-input"
-              type="text"
-              maxlength="12"
-              placeholder="플레이어 이름"
-              autocomplete="off"
-            />
-            <button id="homeSaveNameButton" class="leaderboard-button" type="submit">이름 저장</button>
-          </form>
           <div class="relative mt-8 min-h-[380px] w-full">
             <button type="button" data-part="1" class="part-card part-star part-1">
               <span class="part-label">PART 1</span>
