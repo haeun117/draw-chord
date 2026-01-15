@@ -3240,8 +3240,12 @@
         }
       });
       scoreButton?.addEventListener("click", () => {
+        if (!state.chordHeardThisRun) {
+          alert("화음을 들어보세요!");
+          return;
+        }
         if (!lastRunResult) {
-          if (state.completedPairs.size === currentStage.notes.length && state.chordHeardThisRun) {
+          if (state.completedPairs.size === currentStage.notes.length) {
             finalizeRun();
           } else {
             return;
