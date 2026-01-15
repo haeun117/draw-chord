@@ -2274,6 +2274,18 @@
         }, 1200);
       }
 
+      function showListenWarning() {
+        if (!listenWarningOverlay || !listenWarningMessage) return;
+        listenWarningMessage.textContent = "연결된 화음을 들어보세요!";
+        listenWarningOverlay.classList.remove("hidden");
+        listenWarningMessage.style.animation = "none";
+        void listenWarningMessage.offsetHeight;
+        listenWarningMessage.style.animation = "";
+        setTimeout(() => {
+          listenWarningOverlay.classList.add("hidden");
+        }, 1200);
+      }
+
       function toggleListenNudge() {
         return;
       }
