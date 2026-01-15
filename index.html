@@ -3550,6 +3550,21 @@
           hideStageCompleteOverlay();
         }
       });
+      leaderboardForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!playerNameInput) return;
+        const nextName = sanitizePlayerName(playerNameInput.value);
+        if (!nextName) {
+          if (leaderboardStatus) {
+            leaderboardStatus.textContent = "이름을 입력해주세요.";
+          }
+          playerNameInput.focus();
+          return;
+        }
+        ensurePlayerId();
+        setPlayerName(nextName);
+        syncLeaderboardScore();
+      });
 
       soundToggle.addEventListener("click", () => {
         state.soundOn = !state.soundOn;
