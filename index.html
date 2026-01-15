@@ -1860,6 +1860,14 @@
         const cached = loadCachedLeaderboard();
         if (cached.length) {
           renderLeaderboardRows(cached);
+        } else if (playerName) {
+          renderLeaderboardRows([
+            {
+              playerId,
+              name: playerName,
+              totalScore: totalClaimedStars * 100
+            }
+          ]);
         } else {
           leaderboardList.innerHTML = '<div class="leaderboard-empty">랭킹 불러오는 중...</div>';
         }
