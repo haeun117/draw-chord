@@ -3190,6 +3190,12 @@
 
       replayButton?.addEventListener("click", () => {
         playChord();
+        if (state.completedPairs.size === currentStage.notes.length && state.awaitingChordListen && !state.chordHeardThisRun) {
+          state.chordHeardThisRun = true;
+          state.awaitingChordListen = false;
+          finalizeRun();
+          updateStatusText();
+        }
       });
 
       keySelect.addEventListener("change", (event) => {
