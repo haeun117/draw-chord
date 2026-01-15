@@ -1775,13 +1775,13 @@
       function setPlayerName(name) {
         playerName = name;
         localStorage.setItem(PLAYER_NAME_KEY, playerName);
-        if (playerNameInput) {
-          playerNameInput.value = playerName;
+        if (homePlayerNameInput) {
+          homePlayerNameInput.value = playerName;
         }
         if (leaderboardStatus) {
           leaderboardStatus.textContent = playerName
             ? `현재 이름: ${playerName}`
-            : "이름을 저장하면 랭킹에 표시돼요.";
+            : "랭킹이 자동으로 갱신됩니다.";
         }
       }
 
