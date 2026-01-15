@@ -1831,7 +1831,8 @@
       }
 
       function renderLeaderboardRows(rows) {
-        if (!leaderboardList) return;
+        if (!leaderboardList || !leaderboardTop3) return;
+        leaderboardTop3.innerHTML = "";
         leaderboardList.innerHTML = "";
         if (!rows.length) {
           const empty = document.createElement("div");
@@ -1840,12 +1841,30 @@
           leaderboardList.append(empty);
           return;
         }
-        rows.forEach((row, index) => {
+
+        const podiumStyles = ["gold", "silver", "bronze"];
+        rows.slice(0, 3).forEach((row, index) => {
+          const card = document.createElement("div");
+          card.className = `podium-card ${podiumStyles[index] || ""}`.trim();
+          const rank = document.createElement("div");
+          rank.className = "podium-rank";
+          rank.textContent = String(index + 1);
+          const name = document.createElement("div");
+          name.className = "podium-name";
+          name.textContent = row.name || "이름 없음";
+          const score = document.createElement("div");
+          score.className = "podium-score";
+          score.textContent = `★ ${row.totalScore ?? 0}`;
+          card.append(rank, name, score);
+          leaderboardTop3.append(card);
+        });
+
+        rows.slice(3).forEach((row, index) => {
           const entry = document.createElement("div");
           entry.className = `leaderboard-row${row.playerId === playerId ? " me" : ""}`;
           const rank = document.createElement("div");
           rank.className = "leaderboard-rank";
-          rank.textContent = `${index + 1}`;
+          rank.textContent = `${index + 4}`;
           const name = document.createElement("div");
           name.className = "leaderboard-name";
           name.textContent = row.name || "이름 없음";
