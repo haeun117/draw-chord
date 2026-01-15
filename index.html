@@ -2221,19 +2221,8 @@
         }, 1200);
       }
 
-      function toggleListenNudge(shouldShow) {
-        if (!replayButton) return;
-        let nudge = replayButton.parentElement?.querySelector(".listen-nudge");
-        if (shouldShow) {
-          if (!nudge) {
-            nudge = document.createElement("span");
-            nudge.className = "listen-nudge";
-            nudge.innerHTML = `<span class="arrow">⬅</span>`;
-            replayButton.parentElement?.append(nudge);
-          }
-        } else if (nudge) {
-          nudge.remove();
-        }
+      function toggleListenNudge() {
+        return;
       }
 
       function checkChordCompletion() {
