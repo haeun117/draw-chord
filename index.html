@@ -1779,6 +1779,11 @@
         return name.replace(/\s+/g, " ").trim().slice(0, 12);
       }
 
+      function setSaveButtonState(saved) {
+        if (!homeSaveNameButton) return;
+        homeSaveNameButton.classList.toggle("saved", saved);
+      }
+
       function setPlayerName(name) {
         playerName = name;
         localStorage.setItem(PLAYER_NAME_KEY, playerName);
@@ -1790,6 +1795,19 @@
             ? `현재 이름: ${playerName}`
             : "랭킹이 자동으로 갱신됩니다.";
         }
+      }
+
+      function loadCachedLeaderboard() {
+        try {
+          const raw = localStorage.getItem(LEADERBOARD_CACHE_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function saveCachedLeaderboard(rows) {
+        localStorage.setItem(LEADERBOARD_CACHE_KEY, JSON.stringify(rows));
       }
 
       function updateMyScoreDisplay() {
