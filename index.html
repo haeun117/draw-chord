@@ -1857,7 +1857,12 @@
           leaderboardList.innerHTML = '<div class="leaderboard-empty">랭킹 연결 실패</div>';
           return;
         }
-        leaderboardList.innerHTML = '<div class="leaderboard-empty">랭킹 불러오는 중...</div>';
+        const cached = loadCachedLeaderboard();
+        if (cached.length) {
+          renderLeaderboardRows(cached);
+        } else {
+          leaderboardList.innerHTML = '<div class="leaderboard-empty">랭킹 불러오는 중...</div>';
+        }
         try {
           const leaderboardQuery = query(
             collection(leaderboardDb, LEADERBOARD_COLLECTION),
@@ -1874,6 +1879,7 @@
               totalScore: data.totalScore ?? 0
             });
           });
+          saveCachedLeaderboard(rows);
           renderLeaderboardRows(rows);
         } catch (error) {
           console.warn("Leaderboard fetch failed:", error);
