@@ -2275,13 +2275,13 @@
         const requiredNote = getNextRequiredNote();
         if (state.completedPairs.size === currentStage.notes.length) {
           const orderText = getStageNoteNames().map((note) => formatNoteLabel(note)).join("-");
-          statusText.innerHTML = `<span class="status-complete block">${currentStage.chordName} 완성!</span><span class="mt-2 block text-slate-500">(${orderText})</span>`;
+          statusText.innerHTML = `<span class="font-semibold text-slate-800">${currentStage.chordName} 완성!</span><span class="mt-2 block text-slate-500">(${orderText})</span>`;
           statusHintPersist = false;
           updateRequiredNoteHighlight(null);
           if (!state.chordHeardThisRun) {
             staffWrapper.classList.remove("hidden");
             renderStaff();
-            statusText.innerHTML = `<span class="status-complete block">${currentStage.chordName} 완성!</span>`;
+            statusText.innerHTML = `<span class="font-semibold text-slate-800">${currentStage.chordName} 완성!</span>`;
             toggleListenNudge(true);
             return;
           }
