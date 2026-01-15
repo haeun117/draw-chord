@@ -2132,6 +2132,44 @@
         });
       }
 
+      function getChordGroupNotes(groupIndex) {
+        const start = groupIndex * 3;
+        return currentStage.notes.slice(start, start + 3);
+      }
+
+      function getChordLabel(type) {
+        if (type === "I") return "으뜸화음";
+        if (type === "IV") return "버금딸림화음";
+        if (type === "V") return "딸림화음";
+        return "화음";
+      }
+
+      function showChordComplete(type) {
+        if (!statusText) return;
+        const label = getChordLabel(type);
+        statusText.innerHTML = `<span class="status-complete block">${label} 완성!</span>`;
+        staffWrapper.classList.remove("hidden");
+        renderStaff();
+        statusHintPersist = true;
+        setTimeout(() => {
+          statusHintPersist = false;
+          updateStatusText();
+        }, 1200);
+      }
+
+      function checkChordCompletion() {
+        if (!currentStage.chordTypes || currentStage.chordTypes.length <= 1) return;
+        currentStage.chordTypes.forEach((type, idx) => {
+          if (state.completedChordGroups.has(idx)) return;
+          const groupNotes = getChordGroupNotes(idx);
+          const isComplete = groupNotes.every((note) => state.completedPairs.has(note));
+          if (isComplete) {
+            state.completedChordGroups.add(idx);
+            showChordComplete(type);
+          }
+        });
+      }
+
       function showStageCompleteOverlay() {
         if (!stageCompleteOverlay) return;
         if (lastRunResult) {
