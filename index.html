@@ -3069,8 +3069,8 @@
           checkChordCompletion();
         } else {
           state.oneStrokeClear = state.strokesUsed === 1;
-          finalizeRun();
-          playChord();
+          state.awaitingChordListen = true;
+          state.chordHeardThisRun = false;
         }
         clearActiveLine();
         updateStatusText();
