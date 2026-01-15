@@ -2995,7 +2995,9 @@
           path: [...state.pathCells],
           note
         });
-        if (state.completedPairs.size === currentStage.notes.length) {
+        if (state.completedPairs.size !== currentStage.notes.length) {
+          checkChordCompletion();
+        } else {
           state.oneStrokeClear = state.strokesUsed === 1;
           finalizeRun();
           playChord();
