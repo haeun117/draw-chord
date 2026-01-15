@@ -2277,7 +2277,7 @@
           if (!state.chordHeardThisRun) {
             staffWrapper.classList.remove("hidden");
             renderStaff();
-            statusText.innerHTML = `<span class="status-complete block">${currentStage.chordName} 완성!</span><span class="mt-2 block text-slate-500">화음 듣기 후 완료</span>`;
+            statusText.innerHTML = `<span class="status-complete block">${currentStage.chordName} 완성!</span>`;
             return;
           }
           showStageCompleteOverlay();
