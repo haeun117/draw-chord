@@ -1739,6 +1739,7 @@
       let bestRuns = {};
       let lastRunResult = null;
       let totalClaimedStars = 0;
+      let stageStreakCount = 0;
 
       function loadBestRuns() {
         try {
@@ -2776,7 +2777,10 @@
       }
 
       function finalizeRun() {
+        stageStreakCount = stageStreakCount > 0 ? stageStreakCount + 1 : 1;
+        const bonusStars = stageStreakCount % 2 === 0 ? 1 : 0;
         lastRunResult = buildRunResult(currentStage.id);
+        lastRunResult.bonusStars = bonusStars;
         updateBestRun(lastRunResult);
         updateSummaryUI();
       }
