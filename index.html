@@ -3706,7 +3706,7 @@
       });
       stageClaimButton?.addEventListener("click", () => {
         if (!lastRunResult) return;
-        const earned = lastRunResult.stars;
+        const earned = lastRunResult.stars + (lastRunResult.bonusStars ?? 0);
         if (earned <= 0) return;
         totalClaimedStars += earned;
         saveClaimedStars();
