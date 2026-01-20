@@ -718,10 +718,12 @@
         Object.keys(target).forEach((id) => {
           const expected = target[id] || 0;
           const actual = selection[id] || 0;
+          const tray = trays.find((item) => item.id === id);
+          const label = tray ? `${tray.emoji} ${tray.name}` : id;
           if (actual < expected) {
-            messages.push(`${id} ${expected - actual}개 부족`);
+            messages.push(`${label} ${expected - actual}개 부족`);
           } else if (actual > expected) {
-            messages.push(`${id} ${actual - expected}개 초과`);
+            messages.push(`${label} ${actual - expected}개 초과`);
           }
         });
         feedback.textContent = messages.length ? messages.join(" / ") : "조합이 달라요.";
