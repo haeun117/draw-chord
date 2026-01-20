@@ -590,22 +590,43 @@
       <main>
         <div>
           <section class="screen active" id="screen-counter">
-            <div class="panel">
-              <p class="subtitle">과일로 리듬을 만드는</p>
-              <h1 class="title">Fruit Note Cafe</h1>
-              <div class="order-area">
-                <div class="customer">
-                  <div class="avatar">🧑‍🍳</div>
-                  <div class="speech">
-                    <strong>주문!</strong>
-                    <div class="order-list" id="order-list"></div>
-                    <div class="hint" id="order-hint">총 길이: 1</div>
+            <div class="panel counter-scene">
+              <div class="scene-sky">
+                <div class="scene-banner">
+                  <span class="scene-title">Fruit Note Cafe</span>
+                  <div class="scene-sun">☀️</div>
+                </div>
+                <div class="scene-customers">
+                  <div class="customer-card">
+                    <div class="portrait">🧑‍🎨</div>
+                    <div class="customer-tag">대기</div>
+                  </div>
+                  <div class="customer-card active">
+                    <div class="order-bubble">
+                      <div class="order-bubble-title">주문!</div>
+                      <div class="order-list" id="order-list"></div>
+                      <div class="hint" id="order-hint">총 길이: 1</div>
+                    </div>
+                    <div class="portrait">🧑‍🍳</div>
+                    <div class="customer-tag">손님</div>
+                  </div>
+                  <div class="customer-card">
+                    <div class="portrait">🧑‍🦱</div>
+                    <div class="customer-tag">대기</div>
                   </div>
                 </div>
-                <div class="cta-row">
-                  <button class="btn-primary" id="btn-prepare">준비하기</button>
-                  <button class="btn-ghost" id="btn-repeat">다시 묻기</button>
+              </div>
+              <div class="counter-bar">
+                <div class="counter-plates">
+                  <div class="plate">🍣</div>
+                  <div class="plate">🍙</div>
+                  <div class="plate">🥗</div>
                 </div>
+                <div class="counter-score">총 코인 <span id="counter-coins">120</span></div>
+              </div>
+              <div class="counter-actions">
+                <button class="btn-primary" id="btn-prepare">준비하기</button>
+                <button class="btn-ghost" id="btn-repeat">다시 묻기</button>
               </div>
             </div>
 
