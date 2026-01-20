@@ -726,6 +726,7 @@
       const hudStage = document.getElementById("hud-stage");
       const hudCombo = document.getElementById("hud-combo");
       const hudCoin = document.getElementById("hud-coin");
+      const counterCoins = document.getElementById("counter-coins");
       const timerBar = document.getElementById("timer-bar");
       const modeSwitch = document.getElementById("mode-switch");
       const mappingList = document.getElementById("mapping-list");
@@ -896,6 +897,7 @@
       function updateHud() {
         hudCombo.textContent = String(combo);
         hudCoin.textContent = String(coins);
+        if (counterCoins) counterCoins.textContent = String(coins);
       }
 
       function startTimer() {
