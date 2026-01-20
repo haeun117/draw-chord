@@ -157,49 +157,180 @@
         font-size: 15px;
       }
 
-      .order-area {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .customer {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-      }
-
-      .customer .avatar {
-        width: 90px;
-        height: 90px;
-        border-radius: 24px;
-        background: linear-gradient(145deg, #fef3c7, #fde68a);
-        display: grid;
-        place-items: center;
-        font-size: 44px;
-        box-shadow: inset 0 4px 10px rgba(255, 255, 255, 0.7);
-      }
-
-      .speech {
-        flex: 1;
-        background: #fff9f0;
-        border-radius: 24px;
-        padding: 18px 20px;
-        border: 1px dashed rgba(255, 122, 89, 0.35);
+      .counter-scene {
+        padding: 0;
+        overflow: hidden;
+        background: #fff7e7;
         position: relative;
       }
 
-      .speech::after {
+      .scene-sky {
+        background: linear-gradient(180deg, #bde5ff 0%, #e9f7ff 55%, #fef3c7 100%);
+        padding: 18px 20px 0;
+        position: relative;
+      }
+
+      .scene-sky::after {
         content: "";
         position: absolute;
-        left: -8px;
-        top: 36px;
-        width: 16px;
-        height: 16px;
-        background: #fff9f0;
-        border-left: 1px dashed rgba(255, 122, 89, 0.35);
-        border-bottom: 1px dashed rgba(255, 122, 89, 0.35);
-        transform: rotate(45deg);
+        inset: 0;
+        background:
+          radial-gradient(circle at 20% 35%, rgba(255, 255, 255, 0.85), transparent 42%),
+          radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.9), transparent 40%),
+          radial-gradient(circle at 55% 55%, rgba(255, 255, 255, 0.7), transparent 45%);
+        opacity: 0.8;
+        pointer-events: none;
+      }
+
+      .scene-banner {
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(90deg, #f5d89a, #f8c77d);
+        border: 2px solid rgba(92, 63, 29, 0.2);
+        border-radius: 18px;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: "Fraunces", serif;
+        box-shadow: 0 10px 24px rgba(93, 64, 25, 0.18);
+      }
+
+      .scene-title {
+        font-size: 20px;
+        letter-spacing: 0.4px;
+      }
+
+      .scene-sun {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #fff5b5, #f59e0b);
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+        box-shadow: 0 8px 18px rgba(245, 158, 11, 0.35);
+      }
+
+      .scene-customers {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 22px 6px 30px;
+      }
+
+      .customer-card {
+        text-align: center;
+        width: 150px;
+        position: relative;
+      }
+
+      .customer-card .portrait {
+        width: 96px;
+        height: 96px;
+        border-radius: 28px;
+        background: linear-gradient(160deg, #ffffff, #ffe3d1);
+        display: grid;
+        place-items: center;
+        font-size: 48px;
+        margin: 0 auto 6px;
+        border: 3px solid rgba(92, 63, 29, 0.2);
+        box-shadow: 0 12px 22px rgba(24, 24, 48, 0.12);
+      }
+
+      .customer-card.active .portrait {
+        transform: translateY(-6px);
+        background: linear-gradient(160deg, #fff7ed, #fed7aa);
+      }
+
+      .customer-tag {
+        font-size: 12px;
+        color: var(--ink-2);
+        font-weight: 600;
+      }
+
+      .order-bubble {
+        position: absolute;
+        left: 50%;
+        top: -6px;
+        transform: translate(-50%, -100%);
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 12px 14px;
+        border: 2px solid rgba(92, 63, 29, 0.2);
+        min-width: 220px;
+        box-shadow: 0 14px 26px rgba(24, 24, 48, 0.12);
+      }
+
+      .order-bubble::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        transform: translateX(-50%);
+        width: 18px;
+        height: 18px;
+        background: #ffffff;
+        border-right: 2px solid rgba(92, 63, 29, 0.2);
+        border-bottom: 2px solid rgba(92, 63, 29, 0.2);
+        transform-origin: center;
+        rotate: 45deg;
+      }
+
+      .order-bubble-title {
+        font-weight: 700;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .counter-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 20px;
+        background: linear-gradient(180deg, #c58b55, #b0703d);
+        border-top: 4px solid rgba(92, 63, 29, 0.25);
+      }
+
+      .counter-plates {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .plate {
+        width: 70px;
+        height: 40px;
+        background: #ffffff;
+        border-radius: 999px;
+        border: 2px solid rgba(92, 63, 29, 0.2);
+        display: grid;
+        place-items: center;
+        font-size: 20px;
+        box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .counter-score {
+        background: rgba(255, 255, 255, 0.7);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .counter-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px 20px 18px;
+        background: #fff3df;
+        border-top: 1px solid rgba(92, 63, 29, 0.12);
       }
 
       .order-list {
