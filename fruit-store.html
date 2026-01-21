@@ -1422,6 +1422,11 @@
             const leafClass = fruit.id === "blueberry" ? "" : i % 2 === 0 ? "leaf" : "";
             const pearClass = fruit.id === "pear" ? "pear-shape" : "";
             piece.className = `fruit-piece p${i} ${leafClass} ${pearClass}`.trim();
+            if (fruit.id === "peach") {
+              const line = document.createElement("span");
+              line.className = "peach-line";
+              piece.appendChild(line);
+            }
             cluster.appendChild(piece);
           }
           const basket = document.createElement("div");
