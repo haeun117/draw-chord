@@ -534,22 +534,25 @@
       .fruit-slot.pear .fruit-piece.pear-shape::before {
         content: "";
         position: absolute;
-        top: -8px;
+        top: -12px;
         left: 50%;
-        width: 6px;
-        height: 12px;
+        width: 4px;
+        height: 14px;
         background: #6b4b3e;
         border-radius: 999px;
-        transform: translateX(-50%) rotate(-10deg);
+        transform: translateX(-50%) rotate(-12deg);
       }
 
-      .fruit-slot.pear .fruit-piece.leaf::after {
-        width: 16px;
+      .fruit-slot.pear .fruit-piece.pear-shape::after {
+        content: "";
+        position: absolute;
+        top: -16px;
+        right: -4px;
+        width: 18px;
         height: 12px;
-        top: -8px;
-        right: -2px;
         background: #77c36f;
-        border-radius: 6px 14px 6px 14px;
+        border-radius: 6px 16px 6px 16px;
+        border: 2px solid var(--line);
         transform: rotate(-18deg);
       }
 
