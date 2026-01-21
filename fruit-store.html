@@ -412,10 +412,35 @@
         transform: translateX(-50%);
       }
 
-      .plate-fruit.grape {
-        width: 22px;
-        height: 22px;
+      .plate-fruit.melon {
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
+        background:
+          repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.35) 0 2px,
+            transparent 2px 6px
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0.35) 0 2px,
+            transparent 2px 6px
+          ),
+          radial-gradient(circle at 30% 30%, var(--fruit-light), var(--fruit-dark));
+      }
+
+      .plate-fruit.melon::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        width: 10px;
+        height: 4px;
+        background: #8b8f57;
+        border-radius: 999px;
+        transform: translateX(-50%);
+        border: 2px solid var(--line);
       }
 
       .plate-fruit.pineapple {
@@ -990,11 +1015,36 @@
         transform: translateX(-50%);
       }
 
-      .fruit-slot.grape .fruit-piece {
-        width: 22px;
-        height: 22px;
+      .fruit-slot.melon .fruit-piece {
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
+        background:
+          repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.35) 0 3px,
+            transparent 3px 8px
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0.35) 0 3px,
+            transparent 3px 8px
+          ),
+          radial-gradient(circle at 30% 30%, var(--fruit-light), var(--fruit-dark));
         box-shadow: inset -2px -3px 0 rgba(0, 0, 0, 0.12);
+      }
+
+      .fruit-slot.melon .fruit-piece::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        width: 16px;
+        height: 6px;
+        background: #8b8f57;
+        border-radius: 999px;
+        transform: translateX(-50%);
+        border: 2px solid var(--line);
       }
 
       .fruit-slot.pineapple .fruit-piece {
