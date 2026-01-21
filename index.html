@@ -974,9 +974,42 @@
 
       function renderToppings() {
         toppingGrid.innerHTML = "";
-        const plate = document.createElement("div");
-        plate.className = "plate-illustration";
-        toppingGrid.appendChild(plate);
+        const plateWrap = document.createElement("div");
+        plateWrap.className = "plate-drop";
+        plateWrap.id = "plate-drop";
+        const plateItems = document.createElement("div");
+        plateItems.className = "plate-items";
+        plateItems.id = "plate-items";
+        const plateBase = document.createElement("div");
+        plateBase.className = "plate-illustration";
+        plateWrap.appendChild(plateItems);
+        plateWrap.appendChild(plateBase);
+        toppingGrid.appendChild(plateWrap);
+
+        plateWrap.addEventListener("dragover", (event) => {
+          event.preventDefault();
+        });
+        plateWrap.addEventListener("drop", (event) => {
+          event.preventDefault();
+          const fruitId = event.dataTransfer.getData("text/plain");
+          if (fruitId) {
+            plate.push(fruitId);
+            renderPlateItems();
+          }
+        });
+      }
+
+      function renderPlateItems() {
+        const plateItems = document.getElementById("plate-items");
+        if (!plateItems) return;
+        plateItems.innerHTML = "";
+        plate.forEach((id) => {
+          const fruit = fruits.find((item) => item.id === id);
+          if (!fruit) return;
+          const chip = document.createElement("span");
+          chip.textContent = fruit.emoji;
+          plateItems.appendChild(chip);
+        });
       }
 
       function renderFruitBins() {
@@ -1007,9 +1040,13 @@
           const button = document.createElement("button");
           button.className = `fruit-slot ${fruit.id}`.trim();
           button.type = "button";
+          button.draggable = true;
           button.style.setProperty("--fruit-light", style.light);
           button.style.setProperty("--fruit-dark", style.dark);
           button.style.setProperty("--leaf", style.leaf);
+          button.addEventListener("dragstart", (event) => {
+            event.dataTransfer.setData("text/plain", fruit.id);
+          });
           const cluster = document.createElement("div");
           cluster.className = "fruit-cluster";
           for (let i = 1; i <= 7; i += 1) {
