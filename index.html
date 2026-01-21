@@ -618,9 +618,9 @@
         { id: "orange", emoji: "🍊", name: "귤", note: "♩", desc: "4분" },
         { id: "apple", emoji: "🍎", name: "사과", note: "♪", desc: "8분" },
         { id: "blueberry", emoji: "🫐", name: "블루베리", note: "𝅘𝅥𝅯", desc: "16분" },
-        { id: "banana", emoji: "🍌", name: "바나나", note: "셋", desc: "셋잇단" },
         { id: "pear", emoji: "🍐", name: "배", note: "𝅗𝅥", desc: "2분" },
-        { id: "watermelon", emoji: "🍉", name: "수박", note: "𝅝", desc: "온음표" }
+        { id: "banana", emoji: "🍌", name: "바나나", note: "셋", desc: "셋잇단" },
+        { id: "pineapple", emoji: "🍍", name: "파인애플", note: "𝅝", desc: "온음표" }
       ];
 
       const order = {
@@ -705,9 +705,9 @@
           orange: { light: "#ffb259", dark: "#f47c2a", leaf: "#73c06b", klass: "" },
           apple: { light: "#ff6f6f", dark: "#c83232", leaf: "#6abf69", klass: "" },
           blueberry: { light: "#7f90ff", dark: "#4a5bd6", leaf: "#6abf69", klass: "" },
+          pear: { light: "#c4e48c", dark: "#8ebf56", leaf: "#6abf69", klass: "pear" },
           banana: { light: "#ffe88a", dark: "#f0c857", leaf: "#8ad27a", klass: "banana" },
-          pear: { light: "#c4e48c", dark: "#8ebf56", leaf: "#6abf69", klass: "" },
-          watermelon: { light: "#9cd66a", dark: "#5aa64a", leaf: "#3e8f3f", klass: "" }
+          pineapple: { light: "#ffd365", dark: "#f2a93f", leaf: "#5bbf6b", klass: "pineapple" }
         };
         fruits.forEach((fruit) => {
           const style = fruitStyles[fruit.id] || {
