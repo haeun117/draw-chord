@@ -567,6 +567,19 @@
         box-shadow: 0 0 0 1px var(--line);
       }
 
+      .fruit-slot.apple .fruit-piece::after {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        width: 10px;
+        height: 6px;
+        border-bottom: 3px solid var(--line);
+        border-radius: 0 0 999px 999px;
+        transform: translateX(-50%);
+        background: transparent;
+      }
+
       .fruit-slot.apple .fruit-piece.leaf::after {
         width: 16px;
         height: 12px;
