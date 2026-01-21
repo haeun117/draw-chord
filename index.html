@@ -857,12 +857,21 @@
           banana: { light: "#ffe88a", dark: "#f0c857", leaf: "#8ad27a" },
           pineapple: { light: "#ffd365", dark: "#f2a93f", leaf: "#5bbf6b" }
         };
+        const noteLabels = {
+          orange: { symbol: "♩", label: "4분음표" },
+          apple: { symbol: "♪", label: "8분음표" },
+          blueberry: { symbol: "𝅘𝅥𝅯", label: "16분음표" },
+          pear: { symbol: "𝅗𝅥", label: "2분음표" },
+          banana: { symbol: "♩.", label: "점2분음표" },
+          pineapple: { symbol: "𝅝", label: "온음표" }
+        };
         fruits.forEach((fruit) => {
           const style = fruitStyles[fruit.id] || {
             light: "#ffd4b8",
             dark: "#f2a07b",
             leaf: "#6abf69"
           };
+          const note = noteLabels[fruit.id] || { symbol: "♪", label: "" };
           const button = document.createElement("button");
           button.className = `fruit-slot ${fruit.id}`.trim();
           button.type = "button";
@@ -880,6 +889,19 @@
           }
           const basket = document.createElement("div");
           basket.className = "basket";
+          const plankTop = document.createElement("div");
+          plankTop.className = "crate-plank top";
+          const plankMid = document.createElement("div");
+          plankMid.className = "crate-plank mid";
+          const plankBottom = document.createElement("div");
+          plankBottom.className = "crate-plank bottom";
+          const sticker = document.createElement("div");
+          sticker.className = "crate-sticker";
+          sticker.innerHTML = `<span>${note.symbol}</span>${note.label}`;
+          basket.appendChild(plankTop);
+          basket.appendChild(plankMid);
+          basket.appendChild(plankBottom);
+          basket.appendChild(sticker);
           button.appendChild(cluster);
           button.appendChild(basket);
           fruitBins.appendChild(button);
