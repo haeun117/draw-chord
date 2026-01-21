@@ -324,107 +324,42 @@
         transform: rotate(-8deg);
       }
 
-      .bear .body {
-        width: 120px;
-        height: 80px;
-        background: #f7f2ec;
-        border: 4px solid var(--line);
-        border-radius: 26px 26px 22px 22px;
-        margin-top: -8px;
-        position: relative;
-      }
-
-      .bear .scarf {
-        position: absolute;
-        top: 6px;
-        left: 50%;
-        width: 60px;
-        height: 18px;
-        background: #e85a4f;
-        border: 4px solid var(--line);
-        border-radius: 999px;
-        transform: translateX(-50%);
-      }
-
-      .bear .sleeve {
-        position: absolute;
-        top: 10px;
-        width: 30px;
-        height: 26px;
-        background: #f7f2ec;
-        border: 4px solid var(--line);
+      .bear .shirt {
+        width: 130px;
+        height: 90px;
+        border: 6px solid var(--line);
         border-radius: 18px;
+        background: #ffffff;
+        margin-top: -6px;
+        position: relative;
+        clip-path: polygon(
+          8% 18%,
+          26% 4%,
+          45% 0%,
+          55% 0%,
+          74% 4%,
+          92% 18%,
+          78% 32%,
+          72% 28%,
+          72% 100%,
+          28% 100%,
+          28% 28%,
+          22% 32%
+        );
       }
 
-      .bear .sleeve.left {
-        left: -10px;
-      }
-
-      .bear .sleeve.right {
-        right: -10px;
-      }
-
-      .bear .limb {
+      .bear .shirt::before {
+        content: "";
         position: absolute;
-        background: #d69a62;
-        border: 4px solid var(--line);
-        border-radius: 999px;
-      }
-
-      .bear .arm {
-        width: 16px;
-        height: 42px;
-        top: 26px;
-      }
-
-      .bear .arm.left {
-        left: -22px;
-      }
-
-      .bear .arm.right {
-        right: -22px;
-      }
-
-      .bear .hand {
-        width: 18px;
-        height: 18px;
-        bottom: -6px;
-      }
-
-      .bear .hand.left {
-        left: -24px;
-      }
-
-      .bear .hand.right {
-        right: -24px;
-      }
-
-      .bear .leg {
-        width: 20px;
-        height: 30px;
-        bottom: -26px;
-      }
-
-      .bear .leg.left {
-        left: 26px;
-      }
-
-      .bear .leg.right {
-        right: 26px;
-      }
-
-      .bear .foot {
-        width: 20px;
+        top: -2px;
+        left: 50%;
+        width: 34px;
         height: 20px;
-        bottom: -40px;
-      }
-
-      .bear .foot.left {
-        left: 24px;
-      }
-
-      .bear .foot.right {
-        right: 24px;
+        background: #ffffff;
+        border: 6px solid var(--line);
+        border-bottom: none;
+        border-radius: 0 0 18px 18px;
+        transform: translateX(-50%);
       }
 
       .order-card {
