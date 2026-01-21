@@ -909,12 +909,12 @@
           pineapple: { light: "#ffd365", dark: "#f2a93f", leaf: "#5bbf6b" }
         };
         const noteLabels = {
-          orange: { symbol: "♩", label: "4분음표" },
-          apple: { symbol: "♪", label: "8분음표" },
-          blueberry: { symbol: "𝅘𝅥𝅯", label: "16분음표" },
-          pear: { symbol: "𝅗𝅥", label: "2분음표" },
-          banana: { symbol: "♩.", label: "점2분음표" },
-          pineapple: { symbol: "𝅝", label: "온음표" }
+          orange: { type: "quarter", label: "4분음표" },
+          apple: { type: "eighth", label: "8분음표" },
+          blueberry: { type: "sixteenth", label: "16분음표" },
+          pear: { type: "half", label: "2분음표" },
+          banana: { type: "dotted-half", label: "점2분음표" },
+          pineapple: { type: "whole", label: "온음표" }
         };
         fruits.forEach((fruit) => {
           const style = fruitStyles[fruit.id] || {
@@ -922,7 +922,7 @@
             dark: "#f2a07b",
             leaf: "#6abf69"
           };
-          const note = noteLabels[fruit.id] || { symbol: "♪", label: "" };
+          const note = noteLabels[fruit.id] || { type: "quarter", label: "" };
           const button = document.createElement("button");
           button.className = `fruit-slot ${fruit.id}`.trim();
           button.type = "button";
@@ -948,7 +948,41 @@
           plankBottom.className = "crate-plank bottom";
           const sticker = document.createElement("div");
           sticker.className = "crate-sticker";
-          sticker.innerHTML = `<span>${note.symbol}</span>${note.label}`;
+          const noteIcon = document.createElement("span");
+          noteIcon.className = `note ${note.type}`;
+          const head = document.createElement("span");
+          head.className = "head";
+          noteIcon.appendChild(head);
+          if (note.type !== "whole") {
+            const stem = document.createElement("span");
+            stem.className = "stem";
+            noteIcon.appendChild(stem);
+          }
+          if (note.type === "eighth" || note.type === "sixteenth") {
+            const flag1 = document.createElement("span");
+            flag1.className = "flag flag1";
+            noteIcon.appendChild(flag1);
+          }
+          if (note.type === "sixteenth") {
+            const flag2 = document.createElement("span");
+            flag2.className = "flag flag2";
+            noteIcon.appendChild(flag2);
+          }
+          if (note.type === "half" || note.type === "whole" || note.type === "dotted-half") {
+            noteIcon.classList.add("hollow");
+          }
+          if (note.type === "whole") {
+            noteIcon.classList.add("whole");
+          }
+          if (note.type === "dotted-half") {
+            const dot = document.createElement("span");
+            dot.className = "dot";
+            noteIcon.appendChild(dot);
+          }
+          const noteLabel = document.createElement("div");
+          noteLabel.textContent = note.label;
+          sticker.appendChild(noteIcon);
+          sticker.appendChild(noteLabel);
           basket.appendChild(plankTop);
           basket.appendChild(plankMid);
           basket.appendChild(plankBottom);
