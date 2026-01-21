@@ -968,6 +968,9 @@
           }
           const basket = document.createElement("div");
           basket.className = "basket";
+          const fruitLabel = document.createElement("div");
+          fruitLabel.className = "fruit-label";
+          fruitLabel.textContent = fruit.name;
           const plankTop = document.createElement("div");
           plankTop.className = "crate-plank top";
           const plankMid = document.createElement("div");
@@ -1011,6 +1014,7 @@
           noteLabel.textContent = note.label;
           sticker.appendChild(noteIcon);
           sticker.appendChild(noteLabel);
+          basket.appendChild(fruitLabel);
           basket.appendChild(plankTop);
           basket.appendChild(plankMid);
           basket.appendChild(plankBottom);
