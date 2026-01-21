@@ -385,6 +385,24 @@
         transform: translateX(-50%) rotate(-12deg);
       }
 
+      .plate-fruit.blueberry {
+        width: 20px;
+        height: 20px;
+        box-shadow: inset -1px -2px 0 rgba(0, 0, 0, 0.12);
+      }
+
+      .plate-fruit.blueberry::after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        width: 6px;
+        height: 3px;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 0 0 999px 999px;
+        transform: translateX(-50%);
+      }
+
       .workbench {
         background: var(--panel-2);
         border: 4px solid var(--line);
@@ -819,6 +837,18 @@
         width: 24px;
         height: 24px;
         box-shadow: inset -2px -3px 0 rgba(0, 0, 0, 0.1);
+      }
+
+      .fruit-slot.blueberry .fruit-piece::after {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        width: 7px;
+        height: 3px;
+        background: rgba(0, 0, 0, 0.22);
+        border-radius: 0 0 999px 999px;
+        transform: translateX(-50%);
       }
 
       .fruit-slot.banana .fruit-piece {
