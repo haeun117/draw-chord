@@ -347,6 +347,7 @@
         background: #6b4b3e;
         border-radius: 999px;
         transform: translateX(-50%);
+        z-index: 2;
       }
 
       .plate-fruit.peach::after {
@@ -361,6 +362,18 @@
           radial-gradient(circle at 30% 50%, #7ac06b 0 6px, transparent 7px),
           radial-gradient(circle at 70% 50%, #6abf69 0 6px, transparent 7px);
         border-radius: 999px;
+        z-index: 1;
+      }
+
+      .plate-fruit.peach .peach-line {
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        width: 10px;
+        height: 18px;
+        border-left: 2px solid rgba(0, 0, 0, 0.2);
+        border-radius: 999px;
+        transform: translateX(-50%);
       }
 
       .plate-fruit.pear {
@@ -895,6 +908,7 @@
         background: #6b4b3e;
         border-radius: 999px;
         transform: translateX(-50%);
+        z-index: 2;
       }
 
       .fruit-slot.peach .fruit-piece::after {
@@ -909,6 +923,18 @@
           radial-gradient(circle at 30% 50%, #7ac06b 0 8px, transparent 9px),
           radial-gradient(circle at 70% 50%, #6abf69 0 8px, transparent 9px);
         border-radius: 999px;
+        z-index: 1;
+      }
+
+      .fruit-slot.peach .fruit-piece .peach-line {
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        width: 12px;
+        height: 22px;
+        border-left: 2px solid rgba(0, 0, 0, 0.2);
+        border-radius: 999px;
+        transform: translateX(-50%);
       }
 
       .fruit-slot.pear .fruit-piece.pear-shape {
