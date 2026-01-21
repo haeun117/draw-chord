@@ -326,17 +326,17 @@
 
       .bear .body {
         width: 120px;
-        height: 90px;
+        height: 80px;
         background: #f7f2ec;
         border: 4px solid var(--line);
-        border-radius: 22px 22px 28px 28px;
+        border-radius: 26px 26px 22px 22px;
         margin-top: -8px;
         position: relative;
       }
 
       .bear .scarf {
         position: absolute;
-        top: 8px;
+        top: 6px;
         left: 50%;
         width: 60px;
         height: 18px;
@@ -344,6 +344,87 @@
         border: 4px solid var(--line);
         border-radius: 999px;
         transform: translateX(-50%);
+      }
+
+      .bear .sleeve {
+        position: absolute;
+        top: 10px;
+        width: 30px;
+        height: 26px;
+        background: #f7f2ec;
+        border: 4px solid var(--line);
+        border-radius: 18px;
+      }
+
+      .bear .sleeve.left {
+        left: -10px;
+      }
+
+      .bear .sleeve.right {
+        right: -10px;
+      }
+
+      .bear .limb {
+        position: absolute;
+        background: #d69a62;
+        border: 4px solid var(--line);
+        border-radius: 999px;
+      }
+
+      .bear .arm {
+        width: 16px;
+        height: 42px;
+        top: 26px;
+      }
+
+      .bear .arm.left {
+        left: -22px;
+      }
+
+      .bear .arm.right {
+        right: -22px;
+      }
+
+      .bear .hand {
+        width: 18px;
+        height: 18px;
+        bottom: -6px;
+      }
+
+      .bear .hand.left {
+        left: -24px;
+      }
+
+      .bear .hand.right {
+        right: -24px;
+      }
+
+      .bear .leg {
+        width: 20px;
+        height: 30px;
+        bottom: -26px;
+      }
+
+      .bear .leg.left {
+        left: 26px;
+      }
+
+      .bear .leg.right {
+        right: 26px;
+      }
+
+      .bear .foot {
+        width: 20px;
+        height: 20px;
+        bottom: -40px;
+      }
+
+      .bear .foot.left {
+        left: 24px;
+      }
+
+      .bear .foot.right {
+        right: 24px;
       }
 
       .order-card {
@@ -863,7 +944,17 @@
                 </div>
                 <div class="body">
                   <span class="scarf"></span>
+                  <span class="sleeve left"></span>
+                  <span class="sleeve right"></span>
                 </div>
+                <span class="limb arm left"></span>
+                <span class="limb arm right"></span>
+                <span class="limb hand left"></span>
+                <span class="limb hand right"></span>
+                <span class="limb leg left"></span>
+                <span class="limb leg right"></span>
+                <span class="limb foot left"></span>
+                <span class="limb foot right"></span>
               </div>
             </div>
             <div class="order-card">
