@@ -1124,11 +1124,15 @@
         const plateWrap = document.createElement("div");
         plateWrap.className = "plate-drop";
         plateWrap.id = "plate-drop";
+        const noteStrip = document.createElement("div");
+        noteStrip.className = "note-stickers";
+        noteStrip.id = "note-stickers";
         const plateItems = document.createElement("div");
         plateItems.className = "plate-items";
         plateItems.id = "plate-items";
         const plateBase = document.createElement("div");
         plateBase.className = "plate-illustration";
+        plateWrap.appendChild(noteStrip);
         plateWrap.appendChild(plateItems);
         plateWrap.appendChild(plateBase);
         toppingGrid.appendChild(plateWrap);
@@ -1142,6 +1146,7 @@
           if (fruitId) {
             plate.push(fruitId);
             renderPlateItems();
+            renderNoteStickers();
           }
         });
       }
@@ -1177,9 +1182,84 @@
         const plateItems = document.getElementById("plate-items");
         if (!plateItems) return;
         plateItems.innerHTML = "";
-        plate.forEach((id) => {
+        plate.forEach((id, index) => {
           const chip = createFruitChip(id);
-          if (chip) plateItems.appendChild(chip);
+          if (!chip) return;
+          const wrapper = document.createElement("div");
+          wrapper.className = "plate-chip";
+          const remove = document.createElement("button");
+          remove.className = "plate-remove";
+          remove.type = "button";
+          remove.textContent = "x";
+          remove.addEventListener("click", () => {
+            plate.splice(index, 1);
+            renderPlateItems();
+            renderNoteStickers();
+          });
+          wrapper.appendChild(chip);
+          wrapper.appendChild(remove);
+          plateItems.appendChild(wrapper);
+        });
+      }
+
+      function buildNoteIcon(type) {
+        const noteIcon = document.createElement("span");
+        noteIcon.className = `note ${type}`;
+        const head = document.createElement("span");
+        head.className = "head";
+        noteIcon.appendChild(head);
+        if (type !== "whole") {
+          const stem = document.createElement("span");
+          stem.className = "stem";
+          noteIcon.appendChild(stem);
+        }
+        if (type === "eighth" || type === "sixteenth") {
+          const flag1 = document.createElement("span");
+          flag1.className = "flag flag1";
+          noteIcon.appendChild(flag1);
+        }
+        if (type === "sixteenth") {
+          const flag2 = document.createElement("span");
+          flag2.className = "flag flag2";
+          noteIcon.appendChild(flag2);
+        }
+        if (type === "half" || type === "whole" || type === "dotted-half") {
+          noteIcon.classList.add("hollow");
+        }
+        if (type === "whole") {
+          noteIcon.classList.add("whole");
+        }
+        if (type === "dotted-half") {
+          const dot = document.createElement("span");
+          dot.className = "dot";
+          noteIcon.appendChild(dot);
+        }
+        return noteIcon;
+      }
+
+      function renderNoteStickers() {
+        const noteStrip = document.getElementById("note-stickers");
+        if (!noteStrip) return;
+        noteStrip.innerHTML = "";
+        const noteLabels = {
+          orange: { type: "quarter", label: "4분음표" },
+          apple: { type: "eighth", label: "8분음표" },
+          blueberry: { type: "sixteenth", label: "16분음표" },
+          pear: { type: "half", label: "2분음표" },
+          banana: { type: "dotted-half", label: "점2분음표" },
+          pineapple: { type: "whole", label: "온음표" }
+        };
+        const unique = [...new Set(plate)];
+        unique.forEach((id) => {
+          const note = noteLabels[id];
+          if (!note) return;
+          const chip = document.createElement("div");
+          chip.className = "note-chip";
+          chip.appendChild(buildNoteIcon(note.type));
+          const label = document.createElement("span");
+          label.textContent = note.label;
+          chip.appendChild(label);
+          noteStrip.appendChild(chip);
         });
       }
 
@@ -1307,6 +1387,7 @@
       renderContainers();
       renderToppings();
       renderFruitBins();
+      renderNoteStickers();
     </script>
   </body>
 </html>
