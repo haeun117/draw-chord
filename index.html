@@ -127,8 +127,7 @@
       }
 
       .side-panel.right h3 {
-        margin: 0;
-        font-size: 18px;
+        display: none;
       }
 
       .tool-list {
@@ -209,6 +208,29 @@
         border-radius: 50%;
         background: rgba(0, 0, 0, 0.12);
         filter: blur(2px);
+      }
+
+      .plate-drop {
+        position: relative;
+        display: grid;
+        place-items: center;
+        gap: 8px;
+      }
+
+      .plate-items {
+        position: absolute;
+        top: -18px;
+        width: 140px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+        pointer-events: none;
+        font-size: 20px;
+      }
+
+      .plate-items span {
+        filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.15));
       }
 
       .workbench {
