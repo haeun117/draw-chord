@@ -370,9 +370,9 @@
 
       .basket {
         width: 100%;
-        height: 72px;
+        height: 78px;
         border: 4px solid var(--line);
-        border-radius: 0 0 18px 18px;
+        border-radius: 50% / 30%;
         background:
           repeating-linear-gradient(
             45deg,
@@ -393,12 +393,14 @@
       .basket::before {
         content: "";
         position: absolute;
-        inset: -16px 10px auto 10px;
-        height: 24px;
+        left: 8px;
+        right: 8px;
+        top: 10px;
+        height: 26px;
         border: 4px solid var(--line);
-        border-bottom: none;
-        border-radius: 18px 18px 0 0;
+        border-radius: 50% / 70%;
         background: #d7a67c;
+        box-shadow: inset 0 6px 0 rgba(0, 0, 0, 0.08);
       }
 
       .basket::after {
@@ -412,7 +414,7 @@
 
       .fruit-cluster {
         position: absolute;
-        top: 0;
+        top: -6px;
         left: 50%;
         width: 140px;
         height: 80px;
