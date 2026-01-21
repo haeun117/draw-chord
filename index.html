@@ -216,23 +216,90 @@
         display: grid;
         place-items: center;
         gap: 8px;
+        padding-top: 36px;
       }
 
       .plate-items {
         position: absolute;
-        top: -18px;
-        width: 140px;
+        top: 6px;
+        width: 120px;
+        height: 70px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        align-content: center;
         gap: 4px;
-        pointer-events: none;
-        font-size: 20px;
         z-index: 2;
       }
 
       .plate-items span {
         filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.15));
+      }
+
+      .plate-chip {
+        position: relative;
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .plate-remove {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid var(--line);
+        background: #fff1e3;
+        color: var(--line);
+        font-size: 10px;
+        line-height: 1;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        cursor: pointer;
+        transition: opacity 0.15s ease;
+      }
+
+      .plate-chip:hover .plate-remove {
+        opacity: 1;
+      }
+
+      .note-stickers {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .note-chip {
+        background: #fff1e3;
+        border: 2px solid var(--line);
+        border-radius: 8px;
+        padding: 2px 6px;
+        font-size: 10px;
+        font-family: system-ui, sans-serif;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .note-chip .note {
+        width: 12px;
+        height: 18px;
+      }
+
+      .note-chip .head {
+        width: 8px;
+        height: 5px;
+      }
+
+      .note-chip .stem {
+        height: 12px;
       }
 
       .plate-fruit {
