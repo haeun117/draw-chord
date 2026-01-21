@@ -354,14 +354,13 @@
         position: absolute;
         top: -8px;
         left: 50%;
-        width: 18px;
-        height: 10px;
-        border-radius: 999px;
-        border: 2px solid var(--line);
-        border-bottom: none;
-        background: linear-gradient(90deg, #7ac06b 0%, #6abf69 100%);
+        width: 20px;
+        height: 12px;
         transform: translateX(-50%);
-        clip-path: ellipse(40% 60% at 50% 50%);
+        background:
+          radial-gradient(circle at 30% 50%, #7ac06b 0 6px, transparent 7px),
+          radial-gradient(circle at 70% 50%, #6abf69 0 6px, transparent 7px);
+        border-radius: 999px;
       }
 
       .plate-fruit.pear {
@@ -903,14 +902,13 @@
         position: absolute;
         top: -10px;
         left: 50%;
-        width: 24px;
-        height: 12px;
-        border-radius: 999px;
-        border: 2px solid var(--line);
-        border-bottom: none;
-        background: linear-gradient(90deg, #7ac06b 0%, #6abf69 100%);
+        width: 28px;
+        height: 14px;
         transform: translateX(-50%);
-        clip-path: ellipse(40% 60% at 50% 50%);
+        background:
+          radial-gradient(circle at 30% 50%, #7ac06b 0 8px, transparent 9px),
+          radial-gradient(circle at 70% 50%, #6abf69 0 8px, transparent 9px);
+        border-radius: 999px;
       }
 
       .fruit-slot.pear .fruit-piece.pear-shape {
