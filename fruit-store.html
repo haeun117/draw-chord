@@ -330,10 +330,36 @@
         transform: rotate(-12deg);
       }
 
-      .plate-fruit.banana {
-        width: 30px;
-        height: 12px;
+      .plate-fruit.peach {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        clip-path: polygon(
+          50% 6%,
+          62% 10%,
+          74% 22%,
+          80% 40%,
+          80% 62%,
+          70% 82%,
+          50% 100%,
+          30% 82%,
+          20% 62%,
+          20% 40%,
+          26% 22%,
+          38% 10%
+        );
+      }
+
+      .plate-fruit.peach::before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: 50%;
+        width: 3px;
+        height: 8px;
+        background: #6b4b3e;
         border-radius: 999px;
+        transform: translateX(-50%);
       }
 
       .plate-fruit.pear {
@@ -851,20 +877,37 @@
         transform: translateX(-50%);
       }
 
-      .fruit-slot.banana .fruit-piece {
-        width: 46px;
-        height: 18px;
-        border-radius: 999px;
-        box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.12);
+      .fruit-slot.peach .fruit-piece {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        clip-path: polygon(
+          50% 6%,
+          62% 10%,
+          74% 22%,
+          80% 40%,
+          80% 62%,
+          70% 82%,
+          50% 100%,
+          30% 82%,
+          20% 62%,
+          20% 40%,
+          26% 22%,
+          38% 10%
+        );
       }
 
-      .fruit-slot.banana .p1 { transform: rotate(-8deg); }
-      .fruit-slot.banana .p2 { transform: rotate(12deg); }
-      .fruit-slot.banana .p3 { transform: rotate(-14deg); }
-      .fruit-slot.banana .p4 { transform: rotate(10deg); }
-      .fruit-slot.banana .p5 { transform: rotate(-6deg); }
-      .fruit-slot.banana .p6 { transform: rotate(8deg); }
-      .fruit-slot.banana .p7 { transform: rotate(-12deg); }
+      .fruit-slot.peach .fruit-piece::before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        width: 4px;
+        height: 10px;
+        background: #6b4b3e;
+        border-radius: 999px;
+        transform: translateX(-50%);
+      }
 
       .fruit-slot.pear .fruit-piece.pear-shape {
         width: 36px;
@@ -1083,7 +1126,7 @@
         { id: "apple", emoji: "🍎", name: "사과", note: "♪", desc: "8분" },
         { id: "blueberry", emoji: "🫐", name: "블루베리", note: "𝅘𝅥𝅯", desc: "16분" },
         { id: "pear", emoji: "🍐", name: "배", note: "𝅗𝅥", desc: "2분" },
-        { id: "banana", emoji: "🍌", name: "바나나", note: "셋", desc: "셋잇단" },
+        { id: "peach", emoji: "🍑", name: "복숭아", note: "점", desc: "점2분" },
         { id: "pineapple", emoji: "🍍", name: "파인애플", note: "𝅝", desc: "온음표" }
       ];
 
@@ -1192,18 +1235,18 @@
         const fruit = fruits.find((item) => item.id === fruitId);
         if (!fruit) return null;
         const chip = document.createElement("span");
-        const leafClass = fruitId === "banana" ? "" : "leaf";
+        const leafClass = fruitId === "blueberry" ? "" : "leaf";
         const pearClass = fruitId === "pear" ? "pear" : "";
-        const bananaClass = fruitId === "banana" ? "banana" : "";
+        const peachClass = fruitId === "peach" ? "peach" : "";
         const pineappleClass = fruitId === "pineapple" ? "pineapple" : "";
         const appleClass = fruitId === "apple" ? "apple" : "";
-        chip.className = `plate-fruit ${leafClass} ${pearClass} ${bananaClass} ${pineappleClass} ${appleClass}`.trim();
+        chip.className = `plate-fruit ${leafClass} ${pearClass} ${peachClass} ${pineappleClass} ${appleClass} ${fruitId}`.trim();
         const style = {
           orange: { light: "#ffb259", dark: "#f47c2a", leaf: "#73c06b" },
           apple: { light: "#ff6f6f", dark: "#c83232", leaf: "#6abf69" },
           blueberry: { light: "#8ea0ff", dark: "#3d4fd1", leaf: "#6abf69" },
           pear: { light: "#c4e48c", dark: "#8ebf56", leaf: "#6abf69" },
-          banana: { light: "#ffe88a", dark: "#f0c857", leaf: "#8ad27a" },
+          peach: { light: "#ffb5a6", dark: "#e6766a", leaf: "#7ac06b" },
           pineapple: { light: "#ffd365", dark: "#f2a93f", leaf: "#5bbf6b" }
         };
         const palette = style[fruitId];
@@ -1283,7 +1326,7 @@
           apple: { type: "eighth", label: "8분음표" },
           blueberry: { type: "sixteenth", label: "16분음표" },
           pear: { type: "half", label: "2분음표" },
-          banana: { type: "dotted-half", label: "점2분음표" },
+          peach: { type: "dotted-half", label: "점2분음표" },
           pineapple: { type: "whole", label: "온음표" }
         };
         const unique = [...new Set(plate)];
@@ -1307,7 +1350,7 @@
           apple: { light: "#ff6f6f", dark: "#c83232", leaf: "#6abf69" },
           blueberry: { light: "#8ea0ff", dark: "#3d4fd1", leaf: "#6abf69" },
           pear: { light: "#c4e48c", dark: "#8ebf56", leaf: "#6abf69" },
-          banana: { light: "#ffe88a", dark: "#f0c857", leaf: "#8ad27a" },
+          peach: { light: "#ffb5a6", dark: "#e6766a", leaf: "#7ac06b" },
           pineapple: { light: "#ffd365", dark: "#f2a93f", leaf: "#5bbf6b" }
         };
         const noteLabels = {
@@ -1315,7 +1358,7 @@
           apple: { type: "eighth", label: "8분음표" },
           blueberry: { type: "sixteenth", label: "16분음표" },
           pear: { type: "half", label: "2분음표" },
-          banana: { type: "dotted-half", label: "점2분음표" },
+          peach: { type: "dotted-half", label: "점2분음표" },
           pineapple: { type: "whole", label: "온음표" }
         };
         fruits.forEach((fruit) => {
