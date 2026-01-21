@@ -832,7 +832,9 @@
           cluster.className = "fruit-cluster";
           for (let i = 1; i <= 7; i += 1) {
             const piece = document.createElement("span");
-            piece.className = `fruit-piece p${i} ${i % 2 === 0 ? "leaf" : ""}`.trim();
+            const leafClass = i % 2 === 0 ? "leaf" : "";
+            const pearClass = fruit.id === "pear" ? "pear-shape" : "";
+            piece.className = `fruit-piece p${i} ${leafClass} ${pearClass}`.trim();
             cluster.appendChild(piece);
           }
           const basket = document.createElement("div");
