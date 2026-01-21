@@ -1244,7 +1244,7 @@
       ];
 
       let currentOrder = { stage: 1, items: [] };
-      let currentStage = 1;
+      let currentStage = 0;
 
       const toppings = [
         { id: "grape", emoji: "🍇", name: "포도" },
@@ -1691,6 +1691,7 @@
       renderToppings();
       renderFruitBins();
       renderNoteStickers();
+      nextOrder();
     </script>
   </body>
 </html>
