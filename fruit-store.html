@@ -1235,20 +1235,16 @@
 
     <script>
       const fruits = [
-        { id: "orange", emoji: "🍊", name: "귤", note: "♩", desc: "4분" },
-        { id: "apple", emoji: "🍎", name: "사과", note: "♪", desc: "8분" },
-        { id: "blueberry", emoji: "🫐", name: "블루베리", note: "𝅘𝅥𝅯", desc: "16분" },
-        { id: "melon", emoji: "🍈", name: "멜론", note: "𝅗𝅥", desc: "2분" },
-        { id: "peach", emoji: "🍑", name: "복숭아", note: "점", desc: "점2분" },
-        { id: "pineapple", emoji: "🍍", name: "파인애플", note: "𝅝", desc: "온음표" }
+        { id: "orange", emoji: "🍊", name: "귤", note: "♩", desc: "4분", length: 4 },
+        { id: "apple", emoji: "🍎", name: "사과", note: "♪", desc: "8분", length: 2 },
+        { id: "blueberry", emoji: "🫐", name: "블루베리", note: "𝅘𝅥𝅯", desc: "16분", length: 1 },
+        { id: "melon", emoji: "🍈", name: "멜론", note: "𝅗𝅥", desc: "2분", length: 8 },
+        { id: "peach", emoji: "🍑", name: "복숭아", note: "점", desc: "점2분", length: 12 },
+        { id: "pineapple", emoji: "🍍", name: "파인애플", note: "𝅝", desc: "온음표", length: 16 }
       ];
 
-      const order = {
-        items: [
-          { id: "orange", qty: 1 },
-          { id: "apple", qty: 2 }
-        ]
-      };
+      let currentOrder = { stage: 1, items: [] };
+      let currentStage = 1;
 
       const toppings = [
         { id: "grape", emoji: "🍇", name: "포도" },
@@ -1272,6 +1268,7 @@
 
       const fruitBins = document.getElementById("fruit-bins");
       const orderItems = document.getElementById("order-items");
+      const customerImage = document.getElementById("customer-image");
       const toolList = document.getElementById("tool-list");
       const containerRow = document.getElementById("container-row");
       const toppingGrid = document.getElementById("topping-grid");
@@ -1280,13 +1277,109 @@
 
       function renderOrder() {
         orderItems.innerHTML = "";
-        order.items.forEach((item) => {
+        currentOrder.items.forEach((item) => {
           const fruit = fruits.find((candidate) => candidate.id === item.id);
           const wrapper = document.createElement("div");
           wrapper.className = "order-item";
           wrapper.innerHTML = `<span>${fruit ? fruit.emoji : ""}</span><span>x${item.qty}</span>`;
           orderItems.appendChild(wrapper);
         });
+      }
+
+      const customers = [
+        "assets/characters/boy.png",
+        "assets/characters/girl.png",
+        "assets/characters/grandfa.png",
+        "assets/characters/grandma.png",
+        "assets/characters/man.png",
+        "assets/characters/woman.png"
+      ];
+
+      function randomItem(list) {
+        return list[Math.floor(Math.random() * list.length)];
+      }
+
+      function pickCustomer() {
+        if (!customerImage) return;
+        customerImage.src = randomItem(customers);
+      }
+
+      function buildItemsFromCounts(counts) {
+        return Object.entries(counts).map(([id, qty]) => ({ id, qty }));
+      }
+
+      function generateStage1() {
+        const fruit = randomItem(fruits);
+        return { stage: 1, items: [{ id: fruit.id, qty: 1 }] };
+      }
+
+      function generateStage2() {
+        const fruit = randomItem(fruits);
+        const qty = 2 + Math.floor(Math.random() * 3);
+        return { stage: 2, items: [{ id: fruit.id, qty }] };
+      }
+
+      function generateStage3() {
+        const count = 2 + Math.floor(Math.random() * 2);
+        const shuffled = [...fruits].sort(() => Math.random() - 0.5).slice(0, count);
+        const items = shuffled.map((fruit) => ({
+          id: fruit.id,
+          qty: 1 + Math.floor(Math.random() * 2)
+        }));
+        return { stage: 3, items };
+      }
+
+      function findReplacement(targetId) {
+        const target = fruits.find((fruit) => fruit.id === targetId);
+        if (!target) return null;
+        const others = fruits.filter((fruit) => fruit.id !== targetId);
+        const targetLength = target.length;
+
+        for (let attempt = 0; attempt < 200; attempt += 1) {
+          const counts = {};
+          let total = 0;
+          let totalItems = 0;
+          others.forEach((fruit) => {
+            const qty = Math.floor(Math.random() * 5);
+            if (qty > 0) {
+              counts[fruit.id] = qty;
+              total += fruit.length * qty;
+              totalItems += qty;
+            }
+          });
+          if (totalItems >= 2 && total === targetLength) {
+            return buildItemsFromCounts(counts);
+          }
+        }
+
+        const fallback = {
+          melon: [{ id: "orange", qty: 2 }],
+          peach: [{ id: "melon", qty: 1 }, { id: "orange", qty: 1 }],
+          pineapple: [{ id: "melon", qty: 2 }],
+          orange: [{ id: "apple", qty: 2 }],
+          apple: [{ id: "blueberry", qty: 2 }]
+        };
+        return fallback[targetId] || null;
+      }
+
+      function generateStage4() {
+        const eligible = fruits.filter((fruit) => fruit.id !== "blueberry");
+        const target = randomItem(eligible);
+        const replacement = findReplacement(target.id);
+        if (!replacement) {
+          return generateStage3();
+        }
+        return { stage: 4, items: [{ id: target.id, qty: 1 }] };
+      }
+
+      function nextOrder() {
+        currentStage = currentStage % 4 + 1;
+        if (currentStage === 1) currentOrder = generateStage1();
+        if (currentStage === 2) currentOrder = generateStage2();
+        if (currentStage === 3) currentOrder = generateStage3();
+        if (currentStage === 4) currentOrder = generateStage4();
+        pickCustomer();
+        renderOrder();
       }
 
       function renderTools() {
