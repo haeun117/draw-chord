@@ -2155,7 +2155,7 @@
         });
         plateWrap.addEventListener("drop", (event) => {
           event.preventDefault();
-          if (!isStarted) {
+          if (!isStarted || isPaused) {
             showStartPrompt();
             return;
           }
@@ -2321,7 +2321,7 @@
           button.style.setProperty("--fruit-dark", style.dark);
           button.style.setProperty("--leaf", style.leaf);
           button.addEventListener("dragstart", (event) => {
-            if (!isStarted) {
+            if (!isStarted || isPaused) {
               event.preventDefault();
               showStartPrompt();
               return;
