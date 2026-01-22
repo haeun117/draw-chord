@@ -1539,6 +1539,7 @@
       const timerText = document.getElementById("timer-text");
       const startButton = document.getElementById("start-button");
       const pauseButton = document.getElementById("pause-button");
+      const clockFill = document.getElementById("clock-fill");
       const resultOverlay = document.getElementById("result-overlay");
       const resultText = document.getElementById("result-text");
       const resultButton = document.getElementById("result-button");
@@ -1671,6 +1672,10 @@
         timerFill.style.width = `${ratio * 100}%`;
         timerText.textContent = `${timeLeft}s`;
         stageLabel.textContent = currentStage === 0 ? "" : `Stage ${currentStage}`;
+        if (clockFill) {
+          const degrees = Math.max(0, ratio) * 360;
+          clockFill.style.background = `conic-gradient(#4aa6d6 ${degrees}deg, transparent 0deg)`;
+        }
       }
 
       function startStageTimer() {
