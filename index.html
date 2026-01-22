@@ -1902,7 +1902,18 @@
           const fruit = fruits.find((candidate) => candidate.id === item.id);
           const wrapper = document.createElement("div");
           wrapper.className = "order-item";
-          wrapper.innerHTML = `<span>${fruit ? fruit.emoji : ""}</span><span>x${item.qty}</span>`;
+          const chip = createFruitChip(item.id);
+          if (chip) {
+            wrapper.appendChild(chip);
+          } else {
+            const fallback = document.createElement("span");
+            fallback.textContent = fruit ? fruit.emoji : "";
+            wrapper.appendChild(fallback);
+          }
+          const qty = document.createElement("span");
+          qty.className = "order-qty";
+          qty.textContent = `x${item.qty}`;
+          wrapper.appendChild(qty);
           orderItems.appendChild(wrapper);
         });
       }
