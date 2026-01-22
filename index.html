@@ -150,6 +150,11 @@
         font-size: 14px;
       }
 
+      .timer-alarm {
+        font-size: 18px;
+        margin-top: -6px;
+      }
+
       .timer-bar {
         height: 12px;
         border-radius: 999px;
@@ -169,6 +174,28 @@
         font-size: 16px;
         font-weight: 700;
         margin-top: -8px;
+      }
+
+      .timer-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .timer-button {
+        border: 3px solid var(--line);
+        border-radius: 12px;
+        padding: 6px 8px;
+        background: #ffe1d0;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 3px 0 var(--line);
+        font-size: 12px;
+      }
+
+      .timer-button:active {
+        transform: translateY(2px);
+        box-shadow: 0 1px 0 var(--line);
       }
 
       .tool-list {
