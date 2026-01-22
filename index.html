@@ -1401,6 +1401,8 @@
       const stageDuration = 60;
       let timeLeft = stageDuration;
       let timerInterval = null;
+      let isPaused = false;
+      let isStarted = false;
 
       const fruitBins = document.getElementById("fruit-bins");
       const orderItems = document.getElementById("order-items");
@@ -1411,6 +1413,8 @@
       const stageLabel = document.getElementById("stage-label");
       const timerFill = document.getElementById("timer-fill");
       const timerText = document.getElementById("timer-text");
+      const startButton = document.getElementById("start-button");
+      const pauseButton = document.getElementById("pause-button");
       const resultOverlay = document.getElementById("result-overlay");
       const resultText = document.getElementById("result-text");
       const resultButton = document.getElementById("result-button");
