@@ -2926,6 +2926,8 @@
         resultOverlay.classList.add("active");
         resultOverlay.setAttribute("aria-hidden", "false");
         resultOverlay.querySelector(".result-card")?.classList.remove("stage");
+        if (retryButton) retryButton.style.display = "none";
+        if (homeOverlayButton) homeOverlayButton.style.display = "none";
       }
 
       function showStageComplete() {
@@ -2935,6 +2937,8 @@
         resultOverlay.classList.add("active");
         resultOverlay.setAttribute("aria-hidden", "false");
         resultOverlay.querySelector(".result-card")?.classList.add("stage");
+        if (retryButton) retryButton.style.display = "block";
+        if (homeOverlayButton) homeOverlayButton.style.display = "block";
       }
 
       function showStartPrompt() {
