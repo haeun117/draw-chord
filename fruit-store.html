@@ -2498,12 +2498,12 @@
         const term = isRestMode ? "쉼표" : "음표";
         if (currentStage === 1 || currentStage === 2) {
           stage4Note.textContent =
-            "손님이 주문한 과일을 접시에 드래그 하여, 서빙해보세요!";
+            "손님이 주문한 과일을 접시에 드래그 해서 서빙해봅시다.";
           stage4Note.classList.add("is-visible");
           stage4NoteSecondary.innerHTML =
             currentStage === 2
-              ? "주문한 과일과 같은 길이의 과일을<br>하단의 보라색 블록으로 확인해보세요!"
-              : `과일에 해당되는 ${term}를 익혀보세요!`;
+              ? "주문한 과일과 같은 길이의 과일을<br>하단의 보라색 블록으로 확인해봅시다."
+              : `과일에 해당되는 ${term}를 익혀봅시다.`;
           stage4NoteSecondary.classList.add("is-visible");
           return;
         }
@@ -2511,10 +2511,10 @@
           const fruit = fruits.find((item) => item.id === target.id);
           const name = fruit ? fruit.name : "과일";
           const particle = getSubjectParticle(name);
-          stage4Note.innerHTML = `${name}${particle} 다 떨어졌어요!<br>똑같은 ${term} 길이의 과일을 조합해주세요!`;
+          stage4Note.innerHTML = `${name}${particle} 다 떨어졌네요.<br>똑같은 ${term} 길이의 과일을 조합해봅시다.`;
           stage4Note.classList.add("is-visible");
           stage4NoteSecondary.innerHTML =
-            "주문한 과일과 같은 길이의 과일을<br>하단의 보라색 블록으로 확인해보세요!";
+            "주문한 과일과 같은 길이의 과일을<br>하단의 보라색 블록으로 확인해봅시다.";
           stage4NoteSecondary.classList.add("is-visible");
           return;
         }
@@ -3166,7 +3166,7 @@
           const target = currentOrder.items && currentOrder.items[0];
           const usedTarget = target ? plate.includes(target.id) : false;
           resultText.textContent = usedTarget
-            ? "해당 과일과 같은 길이의 다른 과일을 조합해볼까요?"
+            ? "해당 과일과 같은 길이의 다른 과일을 조합해봅시다."
             : "다시 해볼까요?";
         } else {
           resultText.textContent = "다시 해볼까요?";
@@ -3195,7 +3195,7 @@
 
       function showStartPrompt() {
         if (!resultOverlay || !resultText || !resultButton) return;
-        resultText.textContent = "재생 버튼을 누른 후 시작해주세요!";
+        resultText.textContent = "재생 버튼을 누른 후 시작해봅시다.";
         resultButton.textContent = "확인";
         resultOverlay.classList.add("active");
         resultOverlay.setAttribute("aria-hidden", "false");
