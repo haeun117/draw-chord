@@ -2343,6 +2343,7 @@
       const homeCustomers = document.querySelectorAll(".home-customer");
       const stage4Note = document.getElementById("stage4-note");
       const stage4NoteSecondary = document.getElementById("stage4-note-secondary");
+      const countingPanel = document.getElementById("counting-panel");
 
       function renderOrder() {
         orderItems.innerHTML = "";
@@ -3050,6 +3051,10 @@
       stageButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const stage = Number(button.dataset.stageButton || 1);
+          const mode = button.dataset.mode === "rest" ? "rest" : "note";
+          if (countingPanel) {
+            countingPanel.classList.toggle("rest", mode === "rest");
+          }
           plate.splice(0, plate.length);
           renderPlateItems();
           renderNoteStickers();
