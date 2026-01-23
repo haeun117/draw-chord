@@ -2631,14 +2631,15 @@
         const rows = document.querySelectorAll(".counting-row[data-fruit]");
         if (!rows.length) return;
         const active = new Set(plate);
+        const related = new Set();
         if (plate.length > 0) {
           const totalLength = plate.reduce((sum, id) => {
             const fruit = fruits.find((item) => item.id === id);
             return sum + (fruit ? fruit.length : 0);
           }, 0);
           fruits.forEach((fruit) => {
-            if (fruit.length === totalLength) {
-              active.add(fruit.id);
+            if (fruit.length === totalLength && !active.has(fruit.id)) {
+              related.add(fruit.id);
             }
           });
         }
@@ -2646,8 +2647,13 @@
           const fruitId = row.dataset.fruit;
           if (fruitId && active.has(fruitId)) {
             row.classList.add("is-active");
+            row.classList.remove("is-related");
+          } else if (fruitId && related.has(fruitId)) {
+            row.classList.remove("is-active");
+            row.classList.add("is-related");
           } else {
             row.classList.remove("is-active");
+            row.classList.remove("is-related");
           }
         });
       }
