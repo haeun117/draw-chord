@@ -3203,7 +3203,12 @@
 
       if (homeOverlayButton) {
         homeOverlayButton.addEventListener("click", () => {
-          hideResult();
+          if (resultOverlay) {
+            resultOverlay.classList.remove("active");
+            resultOverlay.setAttribute("aria-hidden", "true");
+            resultOverlay.style.display = "none";
+            resultOverlay.querySelector(".result-card")?.classList.remove("stage");
+          }
           showHome();
         });
       }
