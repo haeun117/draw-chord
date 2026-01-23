@@ -2179,7 +2179,7 @@
     <div class="app">
       <div class="home-screen" id="home-screen" aria-hidden="true">
         <div class="home-title">
-          <img class="home-title-logo" src="assets/logo/title-logo.png" alt="" />
+          <img class="home-title-logo" data-asset-src="assets/logo/title-logo.png" alt="" />
           <span>음표</span><span class="title-fruit-apple">과</span><span class="title-fruit-orange">일</span><span class="title-fruit-melon">가</span><span class="title-fruit-blueberry">게</span>
         </div>
         <div class="home-content">
@@ -2189,37 +2189,37 @@
                 <div class="home-bubble">
                   <div class="home-bubble-items"></div>
                 </div>
-                <img class="home-customer-image" src="assets/characters/boy.png" alt="손님" />
+                <img class="home-customer-image" data-asset-src="assets/characters/boy.png" alt="손님" />
               </div>
               <div class="home-customer" data-order="apple,apple">
                 <div class="home-bubble">
                   <div class="home-bubble-items"></div>
                 </div>
-                <img class="home-customer-image" src="assets/characters/girl.png" alt="손님" />
+                <img class="home-customer-image" data-asset-src="assets/characters/girl.png" alt="손님" />
               </div>
               <div class="home-customer" data-order="blueberry,orange">
                 <div class="home-bubble">
                   <div class="home-bubble-items"></div>
                 </div>
-                <img class="home-customer-image" src="assets/characters/grandfa.png" alt="손님" />
+                <img class="home-customer-image" data-asset-src="assets/characters/grandfa.png" alt="손님" />
               </div>
               <div class="home-customer" data-order="melon,peach">
                 <div class="home-bubble">
                   <div class="home-bubble-items"></div>
                 </div>
-                <img class="home-customer-image" src="assets/characters/grandma.png" alt="손님" />
+                <img class="home-customer-image" data-asset-src="assets/characters/grandma.png" alt="손님" />
               </div>
               <div class="home-customer" data-order="pineapple,apple">
                 <div class="home-bubble">
                   <div class="home-bubble-items"></div>
                 </div>
-                <img class="home-customer-image" src="assets/characters/man.png" alt="손님" />
+                <img class="home-customer-image" data-asset-src="assets/characters/man.png" alt="손님" />
               </div>
               <div class="home-customer" data-order="orange,blueberry,blueberry">
                 <div class="home-bubble">
                   <div class="home-bubble-items"></div>
                 </div>
-                <img class="home-customer-image" src="assets/characters/woman.png" alt="손님" />
+                <img class="home-customer-image" data-asset-src="assets/characters/woman.png" alt="손님" />
               </div>
             </div>
           </div>
@@ -2280,7 +2280,7 @@
                 <img
                   class="customer-image"
                   id="customer-image"
-                  src="assets/characters/girl.png"
+                  data-asset-src="assets/characters/girl.png"
                   alt="손님 캐릭터"
                 />
               </div>
@@ -2442,6 +2442,8 @@
       let isPaused = true;
       let isStarted = false;
       let isRestMode = false;
+      const assetBase = "https://raw.githubusercontent.com/haeun117/modul-2/fruit-store/";
+      const assetPath = (path) => `${assetBase}${path}`;
 
       const fruitBins = document.getElementById("fruit-bins");
       const orderItems = document.getElementById("order-items");
@@ -2583,7 +2585,17 @@
         "assets/characters/grandma.png",
         "assets/characters/man.png",
         "assets/characters/woman.png"
-      ];
+      ].map(assetPath);
+
+      function initAssetImages() {
+        const images = document.querySelectorAll("[data-asset-src]");
+        images.forEach((img) => {
+          const src = img.getAttribute("data-asset-src");
+          if (src) {
+            img.src = assetPath(src);
+          }
+        });
+      }
 
       function randomItem(list) {
         return list[Math.floor(Math.random() * list.length)];
@@ -3204,6 +3216,7 @@
       renderNoteStickers();
       updateTimerUI();
       updateClockToggle();
+      initAssetImages();
 
       if (clockToggle) {
         clockToggle.addEventListener("click", () => {
