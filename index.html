@@ -3072,6 +3072,7 @@
         resultButton.textContent = success ? "다음 주문" : "다시 하기";
         resultOverlay.classList.add("active");
         resultOverlay.setAttribute("aria-hidden", "false");
+        resultOverlay.style.display = "flex";
         resultOverlay.querySelector(".result-card")?.classList.remove("stage");
         if (retryButton) retryButton.style.display = "none";
         if (homeOverlayButton) homeOverlayButton.style.display = "none";
@@ -3083,6 +3084,7 @@
         resultButton.textContent = "다음 단계";
         resultOverlay.classList.add("active");
         resultOverlay.setAttribute("aria-hidden", "false");
+        resultOverlay.style.display = "flex";
         resultOverlay.querySelector(".result-card")?.classList.add("stage");
         if (retryButton) retryButton.style.display = "block";
         if (homeOverlayButton) homeOverlayButton.style.display = "block";
@@ -3094,6 +3096,7 @@
         resultButton.textContent = "확인";
         resultOverlay.classList.add("active");
         resultOverlay.setAttribute("aria-hidden", "false");
+        resultOverlay.style.display = "flex";
         resultOverlay.querySelector(".result-card")?.classList.remove("stage");
         if (retryButton) retryButton.style.display = "none";
         if (homeOverlayButton) homeOverlayButton.style.display = "none";
@@ -3103,6 +3106,7 @@
         if (!resultOverlay) return;
         resultOverlay.classList.remove("active");
         resultOverlay.setAttribute("aria-hidden", "true");
+        resultOverlay.style.display = "none";
       }
 
       renderToppings();
