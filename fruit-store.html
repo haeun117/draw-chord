@@ -1778,6 +1778,13 @@
         border-radius: 12px;
         background: #fff8f1;
         border: 2px solid var(--line);
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+      }
+
+      .counting-row.is-active {
+        box-shadow: 0 0 0 3px rgba(255, 174, 84, 0.6),
+          0 8px 12px rgba(255, 174, 84, 0.25);
+        transform: translateY(-2px);
       }
 
       .counting-fruit {
