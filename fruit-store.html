@@ -2906,8 +2906,8 @@
         };
         const rhythmMarks = {
           orange: "V",
-          apple: "따",
-          blueberry: "따따",
+          apple: null,
+          blueberry: null,
           melon: "VV",
           peach: "VVV",
           pineapple: "VVVV"
@@ -2921,10 +2921,31 @@
           const label = document.createElement("span");
           label.textContent = note.label;
           chip.appendChild(label);
-          const rhythm = document.createElement("span");
-          rhythm.className = "rhythm";
-          rhythm.textContent = rhythmMarks[id] || "";
-          chip.appendChild(rhythm);
+          if (id === "apple" || id === "blueberry") {
+            const markWrap = document.createElement("span");
+            markWrap.className = "rhythm-mark";
+            if (id === "apple") {
+              const left = document.createElement("span");
+              left.className = "count-mark v-left";
+              const right = document.createElement("span");
+              right.className = "count-mark v-right";
+              markWrap.appendChild(left);
+              markWrap.appendChild(right);
+            } else {
+              const leftSplit = document.createElement("span");
+              leftSplit.className = "count-mark v-left-split";
+              const right = document.createElement("span");
+              right.className = "count-mark v-right";
+              markWrap.appendChild(leftSplit);
+              markWrap.appendChild(right);
+            }
+            chip.appendChild(markWrap);
+          } else {
+            const rhythm = document.createElement("span");
+            rhythm.className = "rhythm";
+            rhythm.textContent = rhythmMarks[id] || "";
+            chip.appendChild(rhythm);
+          }
           noteStrip.appendChild(chip);
         });
       }
