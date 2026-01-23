@@ -3027,6 +3027,25 @@
           }
         });
       }
+
+      if (retryButton) {
+        retryButton.addEventListener("click", () => {
+          hideResult();
+          plate.splice(0, plate.length);
+          renderPlateItems();
+          renderNoteStickers();
+          updateServeButton();
+          nextOrder();
+          startStageTimer();
+        });
+      }
+
+      if (homeOverlayButton) {
+        homeOverlayButton.addEventListener("click", () => {
+          hideResult();
+          showHome();
+        });
+      }
     </script>
   </body>
 </html>
