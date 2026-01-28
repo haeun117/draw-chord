@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fruit Order Prototype</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nanum+Pen+Script&family=Noto+Music&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./fruit-store-ver2.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="home-screen" id="home-screen" aria-hidden="true">
+        <div class="home-title">
+          <img class="home-title-logo" data-asset-src="assets/logo/title-logo.png" alt="" />
+          <span>음표</span><span class="title-fruit-apple">과</span><span class="title-fruit-orange">일</span><span class="title-fruit-melon">가</span><span class="title-fruit-blueberry">게</span>
+        </div>
+        <div class="home-content">
+          <div class="home-panel">
+            <div class="home-customers">
+              <div class="home-customer" data-order="orange">
+                <div class="home-bubble">
+                  <div class="home-bubble-items"></div>
+                </div>
+                <img class="home-customer-image" data-asset-src="assets/characters/boy.png" alt="손님" />
+              </div>
+              <div class="home-customer" data-order="apple,apple">
+                <div class="home-bubble">
+                  <div class="home-bubble-items"></div>
+                </div>
+                <img class="home-customer-image" data-asset-src="assets/characters/girl.png" alt="손님" />
+              </div>
+              <div class="home-customer" data-order="blueberry,orange">
+                <div class="home-bubble">
+                  <div class="home-bubble-items"></div>
+                </div>
+                <img class="home-customer-image" data-asset-src="assets/characters/grandfa.png" alt="손님" />
+              </div>
+              <div class="home-customer" data-order="melon,peach">
+                <div class="home-bubble">
+                  <div class="home-bubble-items"></div>
+                </div>
+                <img class="home-customer-image" data-asset-src="assets/characters/grandma.png" alt="손님" />
+              </div>
+              <div class="home-customer" data-order="pineapple,apple">
+                <div class="home-bubble">
+                  <div class="home-bubble-items"></div>
+                </div>
+                <img class="home-customer-image" data-asset-src="assets/characters/man.png" alt="손님" />
+              </div>
+              <div class="home-customer" data-order="orange,blueberry,blueberry">
+                <div class="home-bubble">
+                  <div class="home-bubble-items"></div>
+                </div>
+                <img class="home-customer-image" data-asset-src="assets/characters/woman.png" alt="손님" />
+              </div>
+            </div>
+          </div>
+          <div class="home-stages">
+            <div class="home-stage-group">
+              <div class="home-stage-title">음표 학습</div>
+              <button class="stage-button rest note-color" type="button" data-stage-button="1">1단계</button>
+              <button class="stage-button rest note-color" type="button" data-stage-button="2">2단계</button>
+              <button class="stage-button rest note-color" type="button" data-stage-button="3">3단계</button>
+              <button class="stage-button rest note-color" type="button" data-stage-button="4">4단계</button>
+            </div>
+          </div>
+          <div class="home-stages">
+            <div class="home-stage-group">
+              <div class="home-stage-title">쉼표 학습</div>
+              <button class="stage-button rest" type="button" data-stage-button="1" data-mode="rest">1단계</button>
+              <button class="stage-button rest" type="button" data-stage-button="2" data-mode="rest">2단계</button>
+              <button class="stage-button rest" type="button" data-stage-button="3" data-mode="rest">3단계</button>
+              <button class="stage-button rest" type="button" data-stage-button="4" data-mode="rest">4단계</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-screen" id="game-screen">
+        <div class="top-bar">
+          <div class="top-left">
+            <button class="pill-button home" type="button" aria-label="홈" id="home-button">
+              <span class="home-icon" aria-hidden="true"></span>
+            </button>
+            <button class="pill-button mode-label static" type="button" id="mode-label">음표 학습</button>
+            <button class="pill-button upgrade static" type="button" id="stage-label">1단계</button>
+          </div>
+        </div>
+
+        <div class="main-grid">
+          <section class="workbench">
+            <div class="clock-timer">
+              <div class="clock-face">
+                <div class="clock-fill" id="clock-fill"></div>
+                <span class="clock-top-button"></span>
+                <span class="clock-handle"></span>
+                <div class="clock-center"></div>
+              </div>
+              <button class="clock-toggle" id="clock-toggle" data-state="paused" aria-label="재생">
+                <span class="icon-play"></span>
+                <span class="icon-pause"></span>
+              </button>
+            </div>
+            <div class="stage-notes">
+              <div class="stage4-note" id="stage4-note">
+                과일이 다 떨어졌어요! 주문한 과일 대신 다른 과일로 똑같은 음표 길이를 만들어봅시다.
+              </div>
+              <div class="stage4-note secondary" id="stage4-note-secondary">
+                과일에 해당되는 음표를 익혀보세요!
+              </div>
+            </div>
+            <div class="customer-panel">
+              <div class="customer">
+                <img
+                  class="customer-image"
+                  id="customer-image"
+                  data-asset-src="assets/characters/girl.png"
+                  alt="손님 캐릭터"
+                />
+              </div>
+              <div class="order-card">
+                <div class="order-items" id="order-items"></div>
+              </div>
+            </div>
+
+            <div class="fruit-bins" id="fruit-bins"></div>
+          </section>
+
+          <aside class="side-panel right">
+            <div class="topping-grid" id="topping-grid"></div>
+          </aside>
+        </div>
+
+        <div class="bottom-bar" aria-hidden="true"></div>
+        <div class="counting-panel" id="counting-panel">
+          <div class="counting-grid">
+            <div class="counting-row" data-fruit="blueberry">
+              <div class="counting-fruit">
+                <span class="plate-fruit blueberry"></span>
+                <span>블루베리</span>
+              </div>
+              <div class="counting-note">
+                <span class="note">
+                  <span class="head"></span>
+                  <span class="stem"></span>
+                  <span class="flag flag1"></span>
+                  <span class="flag flag2"></span>
+                </span>
+                <span class="rest-icon">𝄿</span>
+                <span class="note-label">16분음표</span>
+                <span class="rest-label">16분쉼표</span>
+              </div>
+              <div class="counting-count mark">
+                <span class="count-mark v-left-split"></span>
+                <span class="count-mark v-right"></span>
+              </div>
+            </div>
+            <div class="counting-row" data-fruit="apple">
+              <div class="counting-fruit">
+                <span class="plate-fruit apple leaf"></span>
+                <span>사과</span>
+              </div>
+              <div class="counting-note">
+                <span class="note">
+                  <span class="head"></span>
+                  <span class="stem"></span>
+                  <span class="flag flag1"></span>
+                </span>
+                <span class="rest-icon">𝄾</span>
+                <span class="note-label">8분음표</span>
+                <span class="rest-label">8분쉼표</span>
+              </div>
+              <div class="counting-count mark">
+                <span class="count-mark v-left"></span>
+                <span class="count-mark v-right"></span>
+              </div>
+            </div>
+            <div class="counting-row" data-fruit="orange">
+              <div class="counting-fruit">
+                <span class="plate-fruit orange leaf"></span>
+                <span>귤</span>
+              </div>
+              <div class="counting-note">
+                <span class="note">
+                  <span class="head"></span>
+                  <span class="stem"></span>
+                </span>
+                <span class="rest-icon">𝄽</span>
+                <span class="note-label">4분음표</span>
+                <span class="rest-label">4분쉼표</span>
+              </div>
+              <div class="counting-count">V</div>
+            </div>
+            <div class="counting-row" data-fruit="melon">
+              <div class="counting-fruit">
+                <span class="plate-fruit melon"></span>
+                <span>멜론</span>
+              </div>
+              <div class="counting-note">
+                <span class="note hollow">
+                  <span class="head"></span>
+                  <span class="stem"></span>
+                </span>
+                <span class="rest-icon">𝄼</span>
+                <span class="note-label">2분음표</span>
+                <span class="rest-label">2분쉼표</span>
+              </div>
+              <div class="counting-count">VV</div>
+            </div>
+            <div class="counting-row" data-fruit="peach">
+              <div class="counting-fruit">
+                <span class="plate-fruit peach"></span>
+                <span>복숭아</span>
+              </div>
+              <div class="counting-note">
+                <span class="note hollow">
+                  <span class="head"></span>
+                  <span class="stem"></span>
+                  <span class="dot"></span>
+                </span>
+                <span class="rest-icon dotted">
+                  𝄼
+                  <span class="rest-dot"></span>
+                </span>
+                <span class="note-label">점2분음표</span>
+                <span class="rest-label">점2분쉼표</span>
+              </div>
+              <div class="counting-count">VVV</div>
+            </div>
+            <div class="counting-row" data-fruit="pineapple">
+              <div class="counting-fruit">
+                <span class="plate-fruit pineapple leaf"></span>
+                <span>파인애플</span>
+              </div>
+              <div class="counting-note">
+                <span class="note whole hollow">
+                  <span class="head"></span>
+                </span>
+                <span class="rest-icon">𝄻</span>
+                <span class="note-label">온음표</span>
+                <span class="rest-label">온쉼표</span>
+              </div>
+              <div class="counting-count">VVVV</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-overlay" id="result-overlay" aria-hidden="true">
+      <div class="result-card">
+        <p id="result-text">서빙 성공!</p>
+        <button type="button" id="result-button">다음 주문</button>
+        <button type="button" id="retry-button" class="result-sub">한번 더</button>
+        <button type="button" id="home-overlay-button" class="result-sub">홈화면</button>
+      </div>
+    </div>
+
+    <script defer src="./fruit-store-ver2.js"></script>
+  </body>
+</html>
